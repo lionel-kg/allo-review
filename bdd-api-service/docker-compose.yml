@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  # PostgreSQL service
+  spotify-db:
+    image: postgres:latest
+    container_name: faille_db
+    environment:
+      POSTGRES_DB: faille_db
+      POSTGRES_USER: lionel
+      POSTGRES_PASSWORD: Test1234
+    ports:
+      - "6000:5432"
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data # Chemin local pour stocker les données de la base de données
+
+
+  # spotify-redis:
+  #   image: redis:latest
+  #   container_name: spotify_redis
+  #   ports:
+  #     - "6379:6379"
+# Ajoutez les services React application et frontend ici
