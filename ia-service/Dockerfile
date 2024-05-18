@@ -13,6 +13,10 @@ RUN npm install
 # Copier tous les fichiers du projet dans le conteneur
 COPY . .
 
+COPY /var/natural-language/credentials.json /app/google-cloud-key.json
+
+ENV GOOGLE_APPLICATION_CREDENTIALS=/app/google-cloud-key.json
+
 # Exposer le port sur lequel le serveur écoute
 EXPOSE 8000
 
