@@ -74,21 +74,21 @@ pipeline {
     //          }
     //       }
     //  }
-    stage('deploy it') {
-    agent any
-    steps {
-        script {
-            sh '''
-                cd /var/www/porfolio-ynov
-                pwd
-                git pull
-                npm install
-                npm run prod
+//     stage('deploy it') {
+//     agent any
+//     steps {
+//         script {
+//             sh '''
+//                 cd /var/www/porfolio-ynov
+//                 pwd
+//                 git pull
+//                 npm install
+//                 npm run prod
 
-            '''
-        }
-    }
-}
+//             '''
+//         }
+//     }
+// }
   }
      post {
         always {
