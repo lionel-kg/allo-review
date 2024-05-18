@@ -62,11 +62,11 @@ pipeline {
                 script {
                     sh '''
                         docker run --name bddreview -d -p 7000:7000 -e PORT=7000 bddreview
-                        docker run --name frontreview -d -p 3000:3000 -e PORT=3000 frontreview
+                        docker run --name oauthreview -d -p 4000:4000 -e PORT=4000 oauthreview
                         docker run --name iareview -d -p 8000:8000 -e PORT=8000 iareview
                         docker run --name notifreview -d -p 5000:5000 -e PORT=5000 notifreview
-                        docker run --name oauthreview -d -p 4000:4000 -e PORT=4000 oauthreview
-                        docker run --name paymentreview -d -p ${PORT_EXPOSED}:5000 -e PORT=5000 paymentreview
+                        docker run --name paymentreview -d -p 9000:9000 -e PORT=9000 paymentreview
+                        docker run --name frontreview -d -p 3000:3000 -e PORT=3000 frontreview
                     '''
                 }
             }
