@@ -13,6 +13,9 @@ RUN npm install
 # Copier le reste du code de l'application dans le conteneur
 COPY . .
 
+# Generate Prisma client
+RUN npx prisma generate
+
 # Exposer le port sur lequel le serveur écoute
 EXPOSE 7000
 
