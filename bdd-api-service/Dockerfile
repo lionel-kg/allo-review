@@ -17,7 +17,7 @@ COPY . .
 RUN npx prisma generate
 
 # Run Prisma migrations
-RUN npx prisma migrate deploy --preview-feature
+# RUN npx prisma migrate deploy --preview-feature
 
 # Exposer le port sur lequel le serveur écoute
 EXPOSE 7000
