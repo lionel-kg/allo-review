@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styles from './index.module.scss';
-import Input from '@/components/input';
+import Input from '@/components/Input';
 import {apiAuth} from '@/config/axios';
 import {useRouter} from 'next/router';
 import CustomButton from '@/components/CustomButton';

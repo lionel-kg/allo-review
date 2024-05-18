@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Exposer le port sur lequel le serveur écoute
-EXPOSE 8000
+EXPOSE 5000
 
 # Lancer la commande de démarrage de ton serveur
 CMD ["npm", "start"]

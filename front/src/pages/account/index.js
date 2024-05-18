@@ -3,7 +3,7 @@ import styles from './index.module.scss';
 import {apiStripe} from '@/config/axios';
 import {useUser} from '@/context/UserContext';
 import Title from '@/components/Account/Title';
-import WithAuth from '@/HDC/WithAuth';
+import WithAuth from '@/HDC/withAuth';
 import Card from '@/components/Account/Card';
 import CardRow from '@/components/Account/CardRow';
 import {IoSettingsOutline} from 'react-icons/io5';
