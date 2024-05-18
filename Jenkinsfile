@@ -5,6 +5,7 @@ pipeline {
     }
     stages {    
         stage('update from git') {
+            agent any
             steps{
                 script{
                     sh '''
