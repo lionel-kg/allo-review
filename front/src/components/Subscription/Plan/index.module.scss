@@ -1,0 +1,37 @@
+.plan {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  border-radius: 15px;
+  padding: 25px;
+  border: 2px solid #f3d269;
+  background-color: rgba(241, 241, 241, 0.8);
+  width: 70%;
+  height: 75%;
+  color: black;
+  &_name {
+    margin-bottom: 20px;
+  }
+
+  &_button {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    transition: 0.2s ease-in-out;
+    &:hover {
+      cursor: pointer;
+      background-color: #f3d269;
+      color: black;
+    }
+  }
+
+  ul {
+    li {
+      padding: 5px 0;
+    }
+  }
+}

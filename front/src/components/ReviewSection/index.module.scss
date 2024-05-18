@@ -1,0 +1,10 @@
+.container {
+    &_section_review {
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid rgb(31, 40, 49);
+        overflow: hidden;
+        padding: 15px 0 18px;
+        width: 100%;
+    }
+}

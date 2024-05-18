@@ -1,0 +1,43 @@
+.container {
+  &_header {
+    position: absolute;
+    z-index: 99;
+    left: 0;
+    right: 0;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    background: linear-gradient(
+      180deg,
+      rgba(38, 40, 43, 0.8) 29.11%,
+      rgba(34, 35, 37, 0) 100%
+    );
+    font-weight: 500;
+    opacity: 1;
+    font-size: 1.2rem;
+  }
+}
+.section {
+  &_one {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    ul {
+      display: flex;
+      flex-direction: row;
+      padding: 5px;
+
+      li {
+        padding: 10px;
+        margin: auto;
+
+        .search {
+          cursor: pointer;
+          background: none;
+        }
+      }
+    }
+  }
+}
