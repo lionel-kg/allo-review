@@ -9,12 +9,9 @@ pipeline {
             steps{
                 script{
                     sh '''
-                cd /var/www/allo-review
-                pwd
-                git pull
-                npm install
-                npm run prod
-
+                    cd /var/www/allo-review
+                    pwd
+                    git pull
             '''
                 }
             }
