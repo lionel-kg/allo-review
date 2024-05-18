@@ -1,0 +1,92 @@
+.container {
+    &_hero {
+        display: flex;
+        position: relative;
+        flex-direction: row;
+        color: white;
+        height: 80vh;
+        font-size: 0.9rem;
+        box-sizing: border-box;
+        font-size: 1rem;
+        // background-color: rgb(0, 0, 0);
+        // background: radial-gradient(80% 170% at 100% 0%, transparent 60%, rgb(79, 47, 25) 80%);
+        z-index: 4;
+        &_bg {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            z-index: 1;
+            background-color: rgba(0, 0, 0, 0.41);
+        }
+        .bg_right {
+            display: flex;
+            background: linear-gradient(22deg, rgb(8, 8, 8) 13%, transparent 40%);
+            z-index: 2;
+        }
+        .cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            z-index: 0;
+            // max-width: 1080px;
+            height: 100%;
+            // left: 35%;
+        }
+        &::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 3rem;
+            position: absolute;
+            bottom: 0%;
+            background: linear-gradient(180deg, rgba(31, 31, 31, 0), rgba(31, 31, 31, 0.5), #111);
+        }
+    }
+    &_content {
+        display: flex;
+        flex-direction: row;
+        z-index: 3;
+    }
+    &_trailer {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        margin: auto;
+        z-index: 10;
+    }
+    &_review {
+        height: fit-content;
+    }
+}
+.title {
+    font-size: 20px;
+    line-height: 44px;
+    font-weight: 800;
+}
+.box_trailer {
+    width: 100%;
+    height: 70vh;
+}
+.box_review {
+    background-color: rgb(14, 14, 14);
+    padding: 10px;
+    padding-block: 20px;
+    padding-inline: 10%;
+}
+.section_title {
+    border-bottom: 1px solid #456;
+    color: #9ab;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.075em;
+    margin-bottom: 0.76923077rem;
+    margin-top: 0;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+}
