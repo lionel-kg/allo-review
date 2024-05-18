@@ -37,6 +37,25 @@ pipeline {
                 }
             }
         }
+        stage('Clean Container') {
+    agent any
+    steps {
+        script {
+            sh '''
+                containers="bddreview frontreview iareview notifreview oauthreview paymentreview"
+                for container in $containers; do
+                    if docker ps -a | grep -q $container; then
+                        echo "Stopping and removing $container..."
+                        docker stop $container
+                        docker rm $container
+                    else
+                        echo "$container is not running."
+                    fi
+                done
+            '''
+        }
+    }
+}
         stage('run containers') {
             agent any
             steps {
@@ -52,28 +71,7 @@ pipeline {
                 }
             }
         }
-    //      stage('Clean Container') {
-    //       agent any
-    //       steps {
-    //          script {
-    //            sh '''
-    //              docker stop bddreview
-    //              docker stop frontreview
-    //              docker stop iareview
-    //              docker stop notifreview
-    //              docker stop oauthreview
-    //              docker stop paymentreview
-
-    //              docker rm bddreview
-    //              docker rm frontreview
-    //              docker rm iareview
-    //              docker rm notifreview
-    //              docker rm oauthreview
-    //              docker rm paymentreview
-    //            '''
-    //          }
-    //       }
-    //  }
+        
 //     stage('deploy it') {
 //     agent any
 //     steps {
