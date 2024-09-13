@@ -19,12 +19,12 @@ const Index = () => {
   const [showModal, setShowModal] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [idMovie, setIdMovie] = useState(null);
 
   const fetchMovie = async () => {
-    const {id} = router.query;
-    if (id && user && loading !== false) {
+    if (idMovie && user && loading !== false) {
       try {
-        const response = await apiBdd.get(`/movie/${id}`);
+        const response = await apiBdd.get(`/movie/${idMovie}`);
         setMovie(response.data);
         console.log(showModal);
         const images = JSON.parse(response.data.images);
@@ -38,7 +38,7 @@ const Index = () => {
         }
 
         try {
-          const isLiked = await apiBdd.get(`/user/${user.id}/likes/${id}`);
+          const isLiked = await apiBdd.get(`/user/${user.id}/likes/${idMovie}`);
           console.log(isLiked);
           setIsLiked(isLiked.data.isLiked);
           setLoading(false);
@@ -53,8 +53,13 @@ const Index = () => {
   };
 
   useEffect(() => {
-    fetchMovie();
-  }, [router.query, user]);
+    const {id} = router.query;
+    console.log(id);
+    setIdMovie(id);
+    if (idMovie) {
+      fetchMovie();
+    }
+  }, [router.query, user, idMovie]);
 
   const sendReview = async () => {
     apiBdd
@@ -64,8 +69,9 @@ const Index = () => {
         userId: user.id,
         author_name: user.username,
       })
-      .then(() => {
-        fetchMovie();
+      .then(async () => {
+        const response = await apiBdd.get(`/movie/${idMovie}`);
+        setMovie(response.data);
         setShowModal(false);
       });
   };
@@ -146,7 +152,9 @@ const Index = () => {
                         <li className="mr-3">{movie.original_language}</li>
                       )}
                       {movie.appreciation && (
-                        <li className="ml-3">{movie.appreciation?.title}</li>
+                        <li className="ml-3 highlight_appreciation">
+                          {movie.appreciation?.title}
+                        </li>
                       )}
                     </ul>
                   </div>

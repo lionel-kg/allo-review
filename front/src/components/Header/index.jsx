@@ -49,7 +49,7 @@ const index = () => {
             </li>
             <li>
               <Link href="/movies">
-                <p>movies</p>
+                <p>Movies</p>
               </Link>
             </li>
             <li>

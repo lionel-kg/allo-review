@@ -5,12 +5,13 @@
 
   border-radius: 15px;
   padding: 25px;
-  border: 2px solid #f3d269;
+  // border: 2px solid #f3d269;
   background-color: rgba(241, 241, 241, 0.8);
-  width: 70%;
-  height: 75%;
+  width: 65%;
+  height: 85%;
   color: black;
   &_name {
+    font-size: 1.6rem;
     margin-bottom: 20px;
   }
 

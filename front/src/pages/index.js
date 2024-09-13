@@ -12,7 +12,7 @@ const Index = () => {
   return (
     <div className="container_page custom_margin_top">
       <div></div>
-      {user ? `Bienvenue ${user?.username}, vous êtes connecté` : 'Bienvenue'}
+      {/* {user ? `Bienvenue ${user?.username}, vous êtes connecté` : 'Bienvenue'} */}
       <Subscription />
     </div>
   );

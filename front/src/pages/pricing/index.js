@@ -4,6 +4,7 @@ import Subscription from '@/components/Subscription';
 import {useUser} from '@/context/UserContext';
 import Withauth from '@/HDC/withAuth';
 import CustomButton from '@/components/CustomButton';
+import styles from './index.module.scss';
 
 const Index = () => {
   const router = useRouter();
@@ -40,7 +41,7 @@ const Index = () => {
 
   return (
     <div className="custom_margin_top  p-3">
-      <div>
+      <div className={styles.subscription_container}>
         <Subscription />
       </div>
     </div>

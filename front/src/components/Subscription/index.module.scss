@@ -1,13 +1,29 @@
-.subscription{
+.subscription {
+  &_title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
 
-    &_title{
-        text-align: center;
-        margin-bottom: 20px;
+  &_pricing {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    height: 45vh;
+    justify-items: center;
+  }
+}
+
+.reverse {
+  //   background-color: #f1b901 !important;
+  background-color: rgba(243, 211, 105, 0.8) !important;
+  color: white !important;
+  button {
+    background-color: white !important;
+    color: black !important;
+    &:hover {
+      cursor: pointer;
+      background-color: black !important;
+      color: white !important;
     }
-
-    &_pricing{
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-    }   
+  }
 }

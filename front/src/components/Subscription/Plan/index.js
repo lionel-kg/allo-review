@@ -4,7 +4,7 @@ import axios from '@/config/axios';
 import getStripe from '@/utils/get-stripe';
 import {useUser} from '@/context/UserContext';
 
-const Index = ({plan}) => {
+const Index = ({plan, classe}) => {
   const {token, user} = useUser();
 
   const handleSubscription = async (priceId, isTrial) => {
@@ -37,7 +37,7 @@ const Index = ({plan}) => {
   };
 
   return (
-    <div className={styles.plan}>
+    <div className={styles.plan + ' ' + classe}>
       <p className={styles.plan_name}>{plan.name}</p>
       <h5 className={styles.plan_price}>{plan.price}</h5>
       <button

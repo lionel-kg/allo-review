@@ -139,24 +139,32 @@
 }
 
 .custom_button {
-    // background-color: black !important;
-    // color: white !important;
-    // padding: 10px 20px !important;
-    margin: 20px 0 !important;
-    border-radius: 3px !important;
-    // border: 1px solid transparent !important;
-    // transition: 0.2s ease-in-out !important;
-    // &:hover {
-    //     cursor: pointer!important;
-    //     background-color: #f3d269!important;
-    //     color: black!important;
-    // }
+  // background-color: black !important;
+  // color: white !important;
+  // padding: 10px 20px !important;
+  margin: 20px 0 !important;
+  border-radius: 3px !important;
+  // border: 1px solid transparent !important;
+  // transition: 0.2s ease-in-out !important;
+  // &:hover {
+  //     cursor: pointer!important;
+  //     background-color: #f3d269!important;
+  //     color: black!important;
+  // }
 }
 
 .format_pre {
-    font-size: 0.9rem; /* Taille de police standard pour le web */
-    line-height: 1.4;
-    letter-spacing: 0.5px;
-    word-spacing: 1px;
-    white-space: pre-wrap;
+  font-size: 0.9rem; /* Taille de police standard pour le web */
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+  word-spacing: 1px;
+  white-space: pre-wrap;
+}
+.highlight {
+  font-size: 1.3rem;
+  font-weight: bold !important;
+  &_appreciation {
+    font-size: 1rem !important;
+    font-weight: bold;
+  }
 }
