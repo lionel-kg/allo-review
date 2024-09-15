@@ -7,6 +7,7 @@ const nextConfig = {
     BDD_API_BASE_URL: 'http://localhost:7000/api',
     MAIL_SMS_BASE_API_URL: 'http://localhost:5000',
     STRIPE_API_BASE_URL: 'http://localhost:9000',
+    IA_API_BASE_URL: 'http://localhost:8000',
     NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY:
       'pk_test_51P6JmwItkzdIGiy5e63MLvBZwQUbE9emnUD5jl3o0YXp3V5P9ZOv87jxTK428OPknVTjA3hYzbjHER80ndUeeDpK00fD5xLrvc',
     FIREBASE_API_KEY: 'AIzaSyBnfhAF-HZaIGiqC57EXkvNW15l__mgBKY',
@@ -22,6 +23,18 @@ const nextConfig = {
   },
   eslint: {
     ignoreDuringBuilds: true,
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'image.tmdb.org',
+      },
+      {
+        protocol: 'https',
+        hostname: 'media.pathe.fr',
+      },
+    ],
   },
 };
 

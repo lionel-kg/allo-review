@@ -2,13 +2,12 @@ import axios from '@/config/axios';
 import {useRouter} from 'next/router';
 import React, {useEffect, useState} from 'react';
 import styles from './index.module.scss';
-import Button from '@/components/Button';
 import {useUser} from '@/context/UserContext';
-import YouTube from 'react-youtube';
 import ReviewSection from '@/components/ReviewSection';
+import MovieHero from '@/components/Movies/MovieHero';
 import Modal from '@/components/Modal';
-import {MdOutlinePlaylistAdd, MdEdit} from 'react-icons/md';
 import {apiBdd} from '@/config/axios';
+
 const Index = () => {
   const {token, user} = useUser();
   const router = useRouter();
@@ -39,7 +38,6 @@ const Index = () => {
 
         try {
           const isLiked = await apiBdd.get(`/user/${user.id}/likes/${idMovie}`);
-          console.log(isLiked);
           setIsLiked(isLiked.data.isLiked);
           setLoading(false);
         } catch (error) {
@@ -51,15 +49,6 @@ const Index = () => {
       }
     }
   };
-
-  useEffect(() => {
-    const {id} = router.query;
-    console.log(id);
-    setIdMovie(id);
-    if (idMovie) {
-      fetchMovie();
-    }
-  }, [router.query, user, idMovie]);
 
   const sendReview = async () => {
     apiBdd
@@ -75,6 +64,7 @@ const Index = () => {
         setShowModal(false);
       });
   };
+
   const toggleLike = async () => {
     if (!token) {
       return router.push('/login');
@@ -82,7 +72,9 @@ const Index = () => {
       try {
         isLiked
           ? await apiBdd.delete(`/movie/${movie.id}/remove-like`, {
-              userId: user.id,
+              data: {
+                userId: user.id,
+              },
             })
           : await apiBdd.post(`/movie/${movie.id}/add-like`, {userId: user.id});
         setIsLiked(!isLiked);
@@ -91,6 +83,15 @@ const Index = () => {
       }
     }
   };
+
+  useEffect(() => {
+    const {id} = router.query;
+    console.log(id);
+    setIdMovie(id);
+    if (idMovie) {
+      fetchMovie();
+    }
+  }, [router.query, user, idMovie]);
 
   if (!movie) {
     return null; // Render nothing or a loading spinner until movie is fetched
@@ -106,90 +107,12 @@ const Index = () => {
         handleFunction={sendReview}
         setShowModal={setShowModal}
       />
-      <div className={styles.container_hero + ' col-12 p-0'}>
-        <div className={styles.container_hero_bg}></div>
-        <div className={styles.cover} style={bannerStyle}></div>
-        <div className={styles.bg_right + ' col-6 p-0'}>
-          <div className={styles.container_content + ' ml-4'}>
-            <div className="flex flex-row m-auto">
-              <div className={styles.img}>
-                {backDrop && (
-                  <img
-                    src={`https://image.tmdb.org/t/p/w185/${backDrop}`}
-                    alt="Movie Backdrop"
-                  />
-                )}
-              </div>
-              <div>
-                <div className="m-3">
-                  <h1 className={styles.title}>{movie.title}</h1>
-                  <div className="flex flex-row ">
-                    <Button
-                      classes="banner_btn"
-                      text={isLiked ? 'Remove from My List' : 'Add to My List'}
-                      onClick={toggleLike}
-                      icon={
-                        isLiked ? (
-                          <MdOutlinePlaylistAdd />
-                        ) : (
-                          <MdOutlinePlaylistAdd />
-                        )
-                      }
-                    />
-                    <Button
-                      classes="banner_btn"
-                      text="Review"
-                      icon={<MdEdit />}
-                      onClick={() => {
-                        setShowModal(!showModal);
-                        console.log(showModal);
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <ul className="flex flex-row  p-3 list-disc">
-                      {movie.original_language && (
-                        <li className="mr-3">{movie.original_language}</li>
-                      )}
-                      {movie.appreciation && (
-                        <li className="ml-3 highlight_appreciation">
-                          {movie.appreciation?.title}
-                        </li>
-                      )}
-                    </ul>
-                  </div>
-                  <div>{movie.overview}</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className={styles.container_trailer}>
-          <div className="col-11">
-            <div className={styles.box_trailer}>
-              <YouTube
-                videoId={movie?.trailer}
-                className={'youtube amru h-full p-5'}
-                containerClassName={'youtube-container amru'}
-                opts={{
-                  width: '100%',
-                  height: '100%',
-                  playerVars: {
-                    autoplay: 1,
-                    controls: 0,
-                    cc_load_policy: 0,
-                    fs: 0,
-                    iv_load_policy: 0,
-                    modestbranding: 0,
-                    rel: 0,
-                    showinfo: 0,
-                  },
-                }}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
+      <MovieHero
+        movie={movie}
+        isLiked={isLiked}
+        toggleLike={toggleLike}
+        openReview={() => setShowModal(true)}
+      />
       <div className={styles.container_review}>
         <div className={styles.box_review}>
           <div>
