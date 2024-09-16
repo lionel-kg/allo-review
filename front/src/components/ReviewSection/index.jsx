@@ -15,7 +15,7 @@ const index = props => {
         <div className="p-2">-</div>
         <div className=" p-2 flex flex-row">
           <p
-            className="highlight_appreciation mr-2"
+            className="highlight_appreciation "
             data-tooltip-id="my-tooltip"
             data-tooltip-content={review.appreciation?.description}>
             {review.appreciation?.title}

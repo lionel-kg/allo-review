@@ -6,7 +6,7 @@ const StarRating = ({rating}) => {
   const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
 
   return (
-    <div style={{display: 'flex', alignItems: 'center'}}>
+    <div className="ml-2" style={{display: 'flex', alignItems: 'center'}}>
       {/* Full stars */}
       {Array(fullStars)
         .fill()
