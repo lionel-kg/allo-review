@@ -17,8 +17,8 @@ COPY . .
 RUN npx prisma generate
 
 # Run Prisma migrations
-RUN npx prisma migrate reset
-RUN npx prisma migrate deploy
+# RUN npx prisma migrate reset
+# RUN npx prisma migrate deploy
 
 # Exposer le port sur lequel le serveur écoute
 EXPOSE 7000
