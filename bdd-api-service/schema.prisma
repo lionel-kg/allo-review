@@ -60,8 +60,9 @@ model Appreciation {
   max_score      Float
   min_magnitude  Float
   max_magnitude  Float
-  description String
-  movies      Movie[]
+  description    String
+  stars          Float?  
+  movies        Movie[]
   reviews      Review[]
 }
 

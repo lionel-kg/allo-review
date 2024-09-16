@@ -20,7 +20,7 @@ RUN npx prisma generate
 # RUN npx prisma migrate deploy --preview-feature
 
 # Exposer le port sur lequel le serveur écoute
-EXPOSE 7000
+EXPOSE 7001
 
 # Lancer la commande de démarrage de ton serveur
 CMD ["npm", "start"]

@@ -62,6 +62,9 @@ const Index = () => {
         const response = await apiBdd.get(`/movie/${idMovie}`);
         setMovie(response.data);
         setShowModal(false);
+      })
+      .finally(() => {
+        setContent('');
       });
   };
 

@@ -5,8 +5,10 @@ import styles from './index.module.scss';
 import ColorThief from 'colorthief';
 import Button from '@/components/Button';
 import {MdOutlinePlaylistAdd, MdEdit, MdClose} from 'react-icons/md';
-import {FaPlay} from 'react-icons/fa';
+import {FaPlay, FaStar, FaStarHalfAlt} from 'react-icons/fa';
 import YouTube from 'react-youtube';
+import {Tooltip} from 'react-tooltip';
+import StarRating from '@/components/StarRating';
 
 const Index = ({movie, isLiked, toggleLike, openReview}) => {
   const imageRef = useRef(null);
@@ -60,8 +62,22 @@ const Index = ({movie, isLiked, toggleLike, openReview}) => {
                 onClick={openReview}
               />
             </div>
-            <div class={styles.hero_rating}>
-              {movie.appreciation && <p>{movie.appreciation?.title}</p>}
+            <div class={styles.hero_rating + ' highlight'}>
+              {movie.original_language && <p>{movie.original_language}</p>}
+
+              {movie.appreciation && (
+                <>
+                  <p className="mr-2 ml-2">-</p>{' '}
+                  <p
+                    data-tooltip-id="my-tooltip"
+                    data-tooltip-content={movie.appreciation?.description}>
+                    {movie.appreciation?.title}
+                  </p>
+                </>
+              )}
+              {movie.appreciation && (
+                <StarRating rating={movie.appreciation?.stars} />
+              )}
             </div>
 
             <p className={styles.hero_description}>{movie.overview}</p>
@@ -128,6 +144,7 @@ const Index = ({movie, isLiked, toggleLike, openReview}) => {
           )}
         </div>
       </div>
+      <Tooltip id="my-tooltip" />
     </>
   );
 };
