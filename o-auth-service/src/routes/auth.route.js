@@ -127,7 +127,7 @@ router.get(
         if (existingUser.data.idDiscord) {
           const payload = {id: req.user.id, email: req.user.email}; // Customize as per your needs
           const token = generateToken(payload);
-          res.cookie('jwt', token, options);
+          res.cookie('jwt', token);
           return res.redirect(`${process.env.FRONT_URL}/movies`);
         } else {
           axios.put(process.env.BDD_API_URL + '/user/' + existingUser.data.id, {
