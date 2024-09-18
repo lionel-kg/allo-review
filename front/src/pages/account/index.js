@@ -6,6 +6,8 @@ import Title from '@/components/Account/Title';
 import WithAuth from '@/HDC/withAuth';
 import Card from '@/components/Account/Card';
 import CardRow from '@/components/Account/CardRow';
+import Modal from '@/components/Account/Modal';
+import FormInfo from '@/components/Form/info';
 import {IoSettingsOutline} from 'react-icons/io5';
 import {MdOutlineSecurity} from 'react-icons/md';
 import {CiCreditCard1, CiLock} from 'react-icons/ci';
@@ -13,6 +15,9 @@ import {CiCreditCard1, CiLock} from 'react-icons/ci';
 const Index = () => {
   const {user, token} = useUser();
   const [subscription, setSubscription] = useState(null);
+  const [form, SetForm] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -37,6 +42,10 @@ const Index = () => {
       setIsLoading(false);
     }
   }, [user]);
+
+  useEffect(() => {
+    console.log(showModal);
+  }, [showModal]);
 
   const handleManageSubscription = async () => {
     try {
@@ -89,6 +98,16 @@ const Index = () => {
           />
         )}
         <CardRow
+          onClick={() => {
+            SetForm(
+              <FormInfo
+                action={() => {
+                  setShowModal(false);
+                }}
+              />,
+            );
+            setShowModal(true);
+          }}
           title={'Mettre à jour ses informations'}
           icon={<MdOutlineSecurity />}
           topBorder
@@ -105,6 +124,10 @@ const Index = () => {
           topBorder
         />
       </Card>
+
+      <Modal modalStatut={showModal} setShowModal={setShowModal}>
+        {form}{' '}
+      </Modal>
     </div>
   );
 };
