@@ -1,28 +1,30 @@
 .container {
-    background-image: url("/public/form-bg.jpeg");
-    &_ssolog {
-        display: flex;
-        flex-direction: row;
-        i {
-            padding: 10px;
-            font-size: 1.5rem;
-        }
+  background-image: url('/public/form-bg.jpeg');
+  &_ssolog {
+    display: flex;
+    flex-direction: row;
+    i {
+      padding: 10px;
+      font-size: 1.5rem;
     }
-    &_input {
+  }
+  &_input {
+  }
+  &_form {
+    @media (min-width: 1000px) {
+      width: 30%;
     }
-    &_form {
-        width: 30%;
-        margin: auto;
-        background-color: rgba(0, 0, 0, 0.8);
-        color: white;
-        border-radius: 10px;
-        padding: 50px;
-        box-shadow: 1;
-        form {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 10px;
+    padding: 50px;
+    box-shadow: 1;
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
+  }
 }

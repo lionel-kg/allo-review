@@ -24,8 +24,8 @@ const Index = props => {
     },
     tablet: {
       breakpoint: {max: 1024, min: 464},
-      items: 6,
-      slidesToSlide: 6,
+      items: 4,
+      slidesToSlide: 4,
     },
     mobile: {
       breakpoint: {max: 464, min: 0},
@@ -55,7 +55,7 @@ const Index = props => {
       <>
         <h2 className={styles.row_title}>{title}</h2>
         <Carousel
-          swipeable={false}
+          swipeable={true}
           draggable={false}
           showDots={false}
           responsive={responsive}

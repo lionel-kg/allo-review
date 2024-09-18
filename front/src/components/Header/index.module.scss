@@ -17,6 +17,14 @@
     font-weight: 500;
     opacity: 1;
     font-size: 1.2rem;
+
+    // Media query for hiding the logo on tablet and mobile
+    @media (max-width: 768px) {
+      padding: 0px 0px;
+      .logo {
+        display: none;
+      }
+    }
   }
 }
 .section {

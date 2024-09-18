@@ -1,11 +1,11 @@
-import Header from "@/components/Header/index";
+import Header from '@/components/Header/index';
 
-const MainLayout = ({ children }) => {
+const MainLayout = ({children}) => {
   return (
-    <>
+    <div>
       <Header />
       <main>{children}</main>
-    </>
+    </div>
   );
 };
 

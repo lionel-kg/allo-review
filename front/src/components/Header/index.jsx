@@ -37,7 +37,7 @@ const index = () => {
       <nav className={styles.container_header}>
         <div className={styles.section_one}>
           <Link href="/">
-            <p>
+            <p className={styles.logo}>
               <Image src="/logo.png" alt="logo" width={150} height={70} />
             </p>
           </Link>
@@ -72,7 +72,7 @@ const index = () => {
           </ul>
         </div>
 
-        <div className={styles.section_two}>
+        <div className={/*styles.section_two + ' ' +*/ styles.logo}>
           <CustomButton
             label={'logout'}
             classes="full-size"
