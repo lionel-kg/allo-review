@@ -284,7 +284,8 @@ router.get('/logout', function (req, res) {
       // Handle error if needed
       console.error(err);
     }
-    res.clearCookie('jwt');
+
+    res.clearCookie('jwt', options);
     res.send('logout'); // Remove the leading slash before 'http'
   });
 });
