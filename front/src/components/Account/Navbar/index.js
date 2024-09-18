@@ -8,6 +8,7 @@ import {useRouter} from 'next/router';
 import {IoSettingsOutline, IoHome} from 'react-icons/io5';
 import {MdOutlineSecurity} from 'react-icons/md';
 import {CiCreditCard1} from 'react-icons/ci';
+import options from '@/services/Cookies';
 
 const Index = () => {
   const router = useRouter();
@@ -18,10 +19,10 @@ const Index = () => {
       .get('/auth/logout')
       .then(user => {
         console.log(user);
+        Cookies.remove('jwt', options);
+        localStorage.removeItem('token');
       })
       .finally(() => {
-        Cookies.remove('jwt');
-        localStorage.removeItem('token');
         router.push('/login');
       });
   };
