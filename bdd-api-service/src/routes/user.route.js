@@ -1,12 +1,12 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const bcrypt = require("bcrypt");
-const prisma = require("../config/db.js");
-const verifyToken = require("../middleware/verifyToken.js");
+const bcrypt = require('bcrypt');
+const prisma = require('../config/db.js');
+const verifyToken = require('../middleware/verifyToken.js');
 // Create User
-router.post("/", async (req, res) => {
+router.post('/', async (req, res) => {
   try {
-    const { username, password, email, idGoogle, idGithub, idDiscord } = req.body;
+    const {username, password, email, idGoogle, idGithub, idDiscord} = req.body;
 
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -25,39 +25,40 @@ router.post("/", async (req, res) => {
 
     res.json(user);
   } catch (error) {
-    console.error("Error creating user:", error);
-    res.status(500).json({ error: "Internal Server Error" });
+    console.error('Error creating user:', error);
+    res.status(500).json({error: 'Internal Server Error'});
   }
 });
 
 // Read Users
-router.post("/exists", async (req, res) => {
+router.post('/exists', async (req, res) => {
   try {
     const users = await prisma.user.findFirst({
-      where: { email: req.body.email },
+      where: {email: req.body.email},
     });
     res.json(users);
   } catch (error) {
-    console.error("Error fetching users:", error);
-    res.status(500).json({ error: "Internal Server Error" });
+    console.error('Error fetching users:', error);
+    res.status(500).json({error: 'Internal Server Error'});
   }
 });
 
-router.post("/", async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const users = await prisma.user.findMany();
     res.json(users);
   } catch (error) {
-    console.error("Error fetching users:", error);
-    res.status(500).json({ error: "Internal Server Error" });
+    console.error('Error fetching users:', error);
+    res.status(500).json({error: 'Internal Server Error'});
   }
 });
 
 // Update User
-router.put("/:id", async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
     const userId = parseInt(req.params.id);
-    const { username, password, email, idGoogle, idGithub, idDiscord, idStripe } = req.body;
+    const {username, password, email, idGoogle, idGithub, idDiscord, idStripe} =
+      req.body;
 
     // Hash password if provided
     let hashedPassword = password;
@@ -67,7 +68,7 @@ router.put("/:id", async (req, res) => {
 
     // Update user in the database
     const updatedUser = await prisma.user.update({
-      where: { id: userId },
+      where: {id: userId},
       data: {
         username,
         password: hashedPassword,
@@ -81,30 +82,30 @@ router.put("/:id", async (req, res) => {
 
     res.json(updatedUser);
   } catch (error) {
-    console.error("Error updating user:", error);
-    res.status(500).json({ error: "Internal Server Error" });
+    console.error('Error updating user:', error);
+    res.status(500).json({error: 'Internal Server Error'});
   }
 });
 
 // Delete User
-router.delete("/:id", async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const userId = parseInt(req.params.id);
 
     // Delete user from the database
     await prisma.user.delete({
-      where: { id: userId },
+      where: {id: userId},
     });
 
-    res.json({ message: "User deleted successfully" });
+    res.json({message: 'User deleted successfully'});
   } catch (error) {
-    console.error("Error deleting user:", error);
-    res.status(500).json({ error: "Internal Server Error" });
+    console.error('Error deleting user:', error);
+    res.status(500).json({error: 'Internal Server Error'});
   }
 });
 
 // Récupérer les films aimés par l'utilisateur
-router.get("/:id/likes", verifyToken, async (req, res) => {
+router.get('/:id/likes', verifyToken, async (req, res) => {
   try {
     const userId = parseInt(req.params.id);
 
@@ -120,20 +121,20 @@ router.get("/:id/likes", verifyToken, async (req, res) => {
 
     res.status(200).json(userWithLikes.likes);
   } catch (error) {
-    console.error("Error fetching user likes:", error);
-    res.status(500).send("Internal Server Error");
+    console.error('Error fetching user likes:', error);
+    res.status(500).send('Internal Server Error');
   }
 });
 
 // Vérifie si un film est aimé par l'utilisateur
-router.get("/:id/likes/:movieId", verifyToken, async (req, res) => {
+router.get('/:id/likes/:movieId', verifyToken, async (req, res) => {
   try {
     const userId = parseInt(req.params.id);
     const movieId = parseInt(req.params.movieId);
 
     // Vérifiez si le film est dans la liste des likes de l'utilisateur
     const likeExists = await prisma.user.findUnique({
-      where: { id: userId },
+      where: {id: userId},
       include: {
         likes: {
           where: {
@@ -147,25 +148,29 @@ router.get("/:id/likes/:movieId", verifyToken, async (req, res) => {
     });
 
     const isLiked = likeExists && likeExists.likes.length > 0;
-    res.status(200).json({ isLiked });
+    res.status(200).json({isLiked});
   } catch (error) {
-    res.status(500).send("Internal Server Error");
+    res.status(500).send('Internal Server Error');
   }
 });
 
 // Abonnement d'un utilisateur
-router.get("/:id/subscription", async (req, res) => {
+// Abonnement d'un utilisateur
+router.get('/:id/subscription', async (req, res) => {
   try {
     const userId = parseInt(req.params.id);
     const subscription = await prisma.subscription.findUnique({
-      where: { userId: userId },
+      where: {userId: userId},
     });
-    !subscription && res.status(404).send({ message: "Subscription not found" });
+    console.log(subscription);
+    if (!subscription) {
+      return res.status(404).send({message: 'Subscription not found'});
+    }
 
     res.status(200).json(subscription);
   } catch (error) {
-    console.error("Error checking if movie is liked:", error);
-    res.status(500).send("Internal Server Error");
+    console.error('Error retrieving subscription:', error);
+    res.status(500).send('Internal Server Error');
   }
 });
 
