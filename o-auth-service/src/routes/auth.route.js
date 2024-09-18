@@ -28,14 +28,14 @@ router.get(
         if (existingUser.data.idGoogle) {
           const payload = {id: req.user.id, email: req.user.emails[0].value};
           const token = generateToken(payload);
-          res.cookie('jwt', token, options);
-          return res.redirect(`${process.env.FRONT_URL}/movies`);
+          // Redirige avec le token dans l'URL
+          return res.redirect(
+            `${process.env.FRONT_URL}/auth/success?token=${token}`,
+          );
         } else {
           await axios.put(
             process.env.BDD_API_URL + '/user/' + existingUser.data.id,
-            {
-              idGoogle: req.user.id,
-            },
+            {idGoogle: req.user.id},
           );
         }
       } else {
@@ -47,18 +47,16 @@ router.get(
         });
       }
 
-      // If user doesn't have idGoogle or it's a new user
       const payload = {id: req.user.id, email: req.user.emails[0].value};
       const token = generateToken(payload);
-      res.cookie('jwt', token, options);
-
-      res.redirect(`${process.env.FRONT_URL}/movies`);
+      // Redirige avec le token dans l'URL
+      res.redirect(`${process.env.FRONT_URL}/auth/success?token=${token}`);
     } catch (error) {
       console.error(
         "Erreur lors de la gestion de l'authentification Google :",
         error,
       );
-      res.redirect(`${process.env.FRONT_URL}/login`);
+      res.redirect(`${process.env.FRONT_URL}/login`); // Redirection en cas d'erreur
     }
   },
 );
@@ -75,33 +73,37 @@ router.get(
         process.env.BDD_API_URL + '/user/exists',
         {email: req.user.emails[0].value},
       );
-      console.log(existingUser.data);
+
       if (existingUser.data) {
         if (existingUser.data.idGithub) {
           const payload = {id: req.user.id, email: req.user.emails[0].value}; // Customize as per your needs
           const token = generateToken(payload);
-          res.cookie('jwt', token, options);
-          return res.redirect(`${process.env.FRONT_URL}/movies`);
+          // Redirige avec le token dans l'URL
+          return res.redirect(
+            `${process.env.FRONT_URL}/auth/success?token=${token}`,
+          );
         } else {
-          axios.put(process.env.BDD_API_URL + '/user/' + existingUser.data.id, {
-            idGithub: req.user.id,
-          });
+          await axios.put(
+            process.env.BDD_API_URL + '/user/' + existingUser.data.id,
+            {idGithub: req.user.id},
+          );
         }
       } else {
-        axios.post(process.env.BDD_API_URL + '/user/', {
+        await axios.post(process.env.BDD_API_URL + '/user/', {
           email: req.user.emails[0].value,
           username: req.user.emails[0].value,
           idGithub: req.user.id,
           password: '',
         });
       }
+
       const payload = {id: req.user.id, email: req.user.emails[0].value}; // Customize as per your needs
       const token = generateToken(payload);
-      res.cookie('jwt', token, options);
-      res.redirect(`${process.env.FRONT_URL}/movies`);
+      // Redirige avec le token dans l'URL
+      res.redirect(`${process.env.FRONT_URL}/auth/success?token=${token}`);
     } catch (error) {
       console.error(
-        "Erreur lors de la gestion de l'authentification Google :",
+        "Erreur lors de la gestion de l'authentification GitHub :",
         error,
       );
       res.redirect(`${process.env.FRONT_URL}/login`); // Redirection en cas d'erreur
@@ -109,49 +111,49 @@ router.get(
   },
 );
 
-//callback linkedin
+//callback discord
 router.get(
   '/discord/callback',
   passport.authenticate('discord', {
-    failureRedirect: `${process.env.FRONT_URL}/login`,
+    failureRedirect: `${process.env.FRONT_URL}/login`, // Redirection en cas d'échec
   }),
   async (req, res) => {
     try {
-      console.log(req.user);
       const existingUser = await axios.post(
         process.env.BDD_API_URL + '/user/exists',
         {email: req.user.email},
       );
-      console.log(existingUser);
+
       if (existingUser.data) {
         if (existingUser.data.idDiscord) {
-          const payload = {id: req.user.id, email: req.user.email}; // Customize as per your needs
+          const payload = {id: req.user.id, email: req.user.email};
           const token = generateToken(payload);
-          res.cookie('jwt', token, options);
-          return res.redirect(`${process.env.FRONT_URL}/movies`);
+          // Redirige avec le token dans l'URL
+          return res.redirect(
+            `${process.env.FRONT_URL}/auth/success?token=${token}`,
+          );
         } else {
-          axios.put(process.env.BDD_API_URL + '/user/' + existingUser.data.id, {
-            idDiscord: req.user.id,
-          });
+          await axios.put(
+            process.env.BDD_API_URL + '/user/' + existingUser.data.id,
+            {idDiscord: req.user.id},
+          );
         }
       } else {
-        axios.post(process.env.BDD_API_URL + '/user/', {
+        await axios.post(process.env.BDD_API_URL + '/user/', {
           email: req.user.email,
           username: req.user.username,
           idDiscord: req.user.id,
           password: '',
         });
       }
-      const payload = {id: req.user.id, email: req.user.email}; // Customize as per your needs
+
+      const payload = {id: req.user.id, email: req.user.email};
       const token = generateToken(payload);
-      res.cookie('jwt', token, options);
-      // Redirection vers la page de succès après l'authentification réussie
-      res.redirect(`${process.env.FRONT_URL}/movies`);
+
+      // Redirige avec le token dans l'URL
+      res.redirect(`${process.env.FRONT_URL}/auth/success?token=${token}`);
     } catch (error) {
-      console.error(
-        "Erreur lors de la gestion de l'authentification Google :",
-        error,
-      );
+      console.error("Erreur lors de l'authentification Discord :", error);
       res.redirect(`${process.env.FRONT_URL}/login`); // Redirection en cas d'erreur
     }
   },
