@@ -1,7 +1,7 @@
 const options =
   process.env.ENV === 'production'
     ? {
-        domain: '.lionelkg.com',
+        domain: '.front-faille.lionelkg.com',
         secure: true,
         sameSite: 'none',
       }
