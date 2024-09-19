@@ -14,15 +14,15 @@ for each folder rename the .env.example to .env then fill up the variables
 
 ## BDD Service
 
-− cd bdd-api-service
-− npm install
-− docker compose up -d
-− npx prisma migrate dev
-− npm run seed_genres
-− npm run seed_categories
-− npm run seed_appreciations
-− npm run seed_movies
-− npm run start
+- cd bdd-api-service
+- npm install
+- docker compose up -d
+- npx prisma migrate dev
+- npm run seed_genres
+- npm run seed_categories
+- npm run seed_appreciations
+- npm run seed_movies
+- npm run start
 
 ## IA Service
 
