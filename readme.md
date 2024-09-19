@@ -8,7 +8,7 @@
 
 Once you have installed all the requirements you can clone the project :
 
-− git clone https://github.com/lionel-kg/allo-review.git
+- git clone https://github.com/lionel-kg/allo-review.git
 
 for each folder rename the .env.example to .env then fill up the variables
 
