@@ -86,4 +86,4 @@ const Index = () => {
     </div>
   );
 };
-export default Withauth(Index);
+export default Index;

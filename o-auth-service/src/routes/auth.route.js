@@ -214,10 +214,11 @@ router.post('/login', async (req, res) => {
     const user = await axios.post(process.env.BDD_API_URL + '/user/exists', {
       email: email,
     });
-    console.log(email, user.data.email);
 
+    console.log(user.data);
+    console.log(email);
     if (!user.data) {
-      return res.status(404).json({message: "Nom d'utilisateur incorrect."});
+      return res.status(200).json([]);
     }
 
     const passwordMatch = await bcrypt.compare(password, user.data.password);

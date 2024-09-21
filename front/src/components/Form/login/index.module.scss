@@ -11,7 +11,9 @@
   &_input {
   }
   &_form {
-    @media (min-width: 1000px) {
+    position: relative;
+    width: 40%;
+    @media (max-width: 1000px) {
       width: 30%;
     }
     margin: auto;
@@ -26,5 +28,16 @@
       justify-content: center;
       align-items: center;
     }
+  }
+}
+.modal {
+  &_close {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+
+    color: white;
   }
 }

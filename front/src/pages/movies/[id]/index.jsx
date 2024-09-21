@@ -21,7 +21,7 @@ const Index = () => {
   const [idMovie, setIdMovie] = useState(null);
 
   const fetchMovie = async () => {
-    if (idMovie && user && loading !== false) {
+    if (idMovie && loading !== false) {
       try {
         const response = await apiBdd.get(`/movie/${idMovie}`);
         setMovie(response.data);
@@ -37,8 +37,12 @@ const Index = () => {
         }
 
         try {
-          const isLiked = await apiBdd.get(`/user/${user.id}/likes/${idMovie}`);
-          setIsLiked(isLiked.data.isLiked);
+          if (user) {
+            const isLiked = await apiBdd.get(
+              `/user/${user.id}/likes/${idMovie}`,
+            );
+            setIsLiked(isLiked.data.isLiked);
+          }
           setLoading(false);
         } catch (error) {
           console.error('Error fetching like status:', error);
@@ -70,7 +74,7 @@ const Index = () => {
 
   const toggleLike = async () => {
     if (!token) {
-      return router.push('/login');
+      setShowModal(true);
     } else {
       try {
         isLiked

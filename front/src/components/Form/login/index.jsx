@@ -9,11 +9,17 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Cookies from 'js-cookie';
 import options from '@/services/Cookies';
+import Button from '@/components/Button';
 
-const index = () => {
+import {LuX} from 'react-icons/lu';
+
+const index = props => {
+  const {isModal, setShowModal} = props;
   const [user, setUser] = useState({});
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
   const router = useRouter();
 
   const ssoLogin = service => {
@@ -38,66 +44,88 @@ const index = () => {
         password: password,
       })
       .then(res => {
-        Cookies.set('jwt', res.data.token, options);
-        router.push('/movies');
+        console.log(res);
+        if (res.data.token) {
+          Cookies.set('jwt', res?.data.token, options);
+          setErrorMessage(undefined);
+          if (isModal === false) {
+            router.push('/movies');
+          }
+        } else {
+          setErrorMessage('Email or password incorrect.');
+          console.log(errorMessage);
+        }
       });
   };
 
   return (
-    <div className={'container_page_form'}>
-      <div className={styles.container_form}>
-        <div className="flex justify_center ">
-          <Image src="/logo.png" alt="logo" width={250} height={160} />
+    <div className={styles.container_form}>
+      <div className="flex justify_center ">
+        <Image src="/logo.png" alt="logo" width={250} height={160} />
+      </div>
+      <div className={styles.container_input}>
+        <Input
+          label="Email"
+          type="text"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          placeholder="Email"
+          required
+        />
+        <Input
+          label="Password"
+          type="password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          placeholder="Password"
+          required
+        />
+      </div>
+      {/* Display error message if there is one */}
+      {errorMessage && <p style={{color: 'red'}}>{errorMessage}</p>}
+
+      <div className="p-2">
+        <CustomButton
+          label="Continue"
+          classes="full-size"
+          onclick={() => {
+            submit();
+          }}
+        />
+      </div>
+      <div className={styles.forgot_password + ' p-2'}>
+        <a href="#" onClick={resetPassword}>
+          Forgot your password ?
+        </a>
+      </div>
+      <div className={styles.container_ssolog + ' justify_between p-2'}>
+        <div>
+          <i
+            className="pi pi-google pointer"
+            onClick={() => ssoLogin('google')}></i>
+          <i
+            className="pi pi-github pointer"
+            onClick={() => ssoLogin('github')}></i>
+          <i
+            className="pi pi-discord pointer"
+            onClick={() => ssoLogin('discord')}></i>
         </div>
-        <div className={styles.container_input}>
-          <Input
-            label="Email"
-            type="text"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            placeholder="Email"
-            required
-          />
-          <Input
-            label="Password"
-            type="password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            placeholder="Password"
-            required
-          />
-        </div>
-        <div className="p-2">
-          <CustomButton
-            label="Continue"
-            classes="full-size"
-            onclick={() => {
-              submit();
-            }}
-          />
-        </div>
-        <div className={styles.forgot_password + ' p-2'}>
-          <a href="#" onClick={resetPassword}>
-            Forgot your password ?
-          </a>
-        </div>
-        <div className={styles.container_ssolog + ' justify_between p-2'}>
-          <div>
-            <i
-              className="pi pi-google pointer"
-              onClick={() => ssoLogin('google')}></i>
-            <i
-              className="pi pi-github pointer"
-              onClick={() => ssoLogin('github')}></i>
-            <i
-              className="pi pi-discord pointer"
-              onClick={() => ssoLogin('discord')}></i>
-          </div>
-          <div className="center_vertical text-xl">
-            <Link href="/register">Register</Link>
-          </div>
+        <div className="center_vertical text-xl">
+          <Link href="/register">Register</Link>
         </div>
       </div>
+      {isModal ? (
+        <Button
+          classes={styles.modal_close}
+          onClick={() => {
+            setShowModal(false);
+            setErrorMessage(undefined);
+          }}
+          text={<LuX />}
+        />
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

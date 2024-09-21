@@ -22,7 +22,9 @@ const index = () => {
 
   return (
     <div className={'container_page'}>
-      <LoginForm />
+      <div className="container_page_form">
+        <LoginForm />
+      </div>
     </div>
   );
 };

@@ -14,8 +14,10 @@ import SearchBar from '@/components/SearchBar';
 
 import styles from './index.module.scss';
 import options from '@/services/Cookies';
+import {useUser} from '@/context/UserContext';
 
 const index = () => {
+  const {user, token, setUser, setToken} = useUser();
   const router = useRouter();
   const [showSearch, setShowSearch] = useState(false);
 
@@ -26,12 +28,13 @@ const index = () => {
       .finally(() => {
         Cookies.remove('jwt', options);
         localStorage.removeItem('token');
+        setUser(null);
+        setToken(null);
         router.push('/login');
       });
   };
 
   return (
-    router.asPath !== '/login' &&
     router.asPath !== '/register' &&
     router.asPath !== '/reset-password' && (
       <nav className={styles.container_header}>
@@ -57,11 +60,15 @@ const index = () => {
                 <p>Favorites</p>
               </Link>
             </li>
-            <li>
-              <Link href="/account">
-                <p>Account</p>
-              </Link>
-            </li>
+            {user ? (
+              <li>
+                <Link href="/account">
+                  <p>Account</p>
+                </Link>
+              </li>
+            ) : (
+              <></>
+            )}
             <li>
               <Button
                 classes={styles.search}

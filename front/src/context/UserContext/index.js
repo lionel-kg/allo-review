@@ -31,10 +31,10 @@ export const UserProvider = ({children}) => {
     };
 
     fetchUser();
-  }, [Cookies.get('jwt')]);
+  }, [Cookies.get('jwt'), token]);
 
   return (
-    <UserContext.Provider value={{user, token, setUser}}>
+    <UserContext.Provider value={{user, token, setUser, setToken}}>
       {children}
     </UserContext.Provider>
   );

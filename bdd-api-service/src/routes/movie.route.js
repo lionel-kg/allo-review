@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
 });
 
 // GET /movies/:id - Get a single movie by id
-router.get('/:id', verifyToken, paywall, async (req, res) => {
+router.get('/:id', async (req, res) => {
   const {id} = req.params;
 
   try {
