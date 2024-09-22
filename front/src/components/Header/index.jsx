@@ -43,10 +43,10 @@ const index = () => {
             <p>
               <Image
                 className={styles.logo_img}
-                src="/logo.png"
+                src="/logo-alloreview.png"
                 alt="logo"
-                width={150}
-                height={70}
+                width={120}
+                height={80}
               />
             </p>
           </Link>

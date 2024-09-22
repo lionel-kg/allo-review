@@ -43,7 +43,12 @@ const index = () => {
     <div className={'container_page_form'}>
       <div className={styles.container_form}>
         <div className="flex justify_center ">
-          <Image src="/logo.png" alt="logo" width={250} height={160} />
+          <Image
+            src="/logo-alloreview.png"
+            alt="logo"
+            width={250}
+            height={160}
+          />
         </div>
         <div className={styles.container_input}>
           <Input

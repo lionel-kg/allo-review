@@ -4,7 +4,7 @@ import Input from '@/components/Input';
 import {apiAuth, apiBdd} from '@/config/axios';
 import {useRouter} from 'next/router';
 import CustomButton from '@/components/CustomButton';
-import Logo from '@/../public/logo.png';
+import Logo from '@/../public/logo-alloreview.png';
 import Image from 'next/image';
 import Link from 'next/link';
 import Cookies from 'js-cookie';
@@ -39,7 +39,7 @@ const index = props => {
   return (
     <div className={styles.container_form}>
       <div className="flex justify_center ">
-        <Image src="/logo.png" alt="logo" width={250} height={160} />
+        <Image src="/logo-alloreview.png" alt="logo" width={250} height={160} />
       </div>
       <div className={styles.container_input}>
         <Input
