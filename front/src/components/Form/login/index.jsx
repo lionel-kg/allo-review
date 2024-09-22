@@ -81,7 +81,6 @@ const index = props => {
           required
         />
       </div>
-      {/* Display error message if there is one */}
       {errorMessage && <p style={{color: 'red'}}>{errorMessage}</p>}
 
       <div className="p-2">

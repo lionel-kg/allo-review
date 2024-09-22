@@ -20,11 +20,11 @@ const generateRecommendationName = filters => {
 const addRecommendationsList = async (req, res) => {
   try {
     const {filters} = req.body;
-    const userId = req.userToken.id;
+    const userEmail = req.userToken.email;
     let userReviews = [];
     let userLikes = [];
     const userData = await prisma.user.findUnique({
-      where: {id: userId},
+      where: {email: userEmail},
       include: {
         reviews: {
           include: {
@@ -73,7 +73,7 @@ const addRecommendationsList = async (req, res) => {
 
     const newRecommendationList = await prisma.recommendation.create({
       data: {
-        userId,
+        userId: userData?.id,
         title: recommandationName,
         movies: {
           connect: addedMovies.map(movie => ({id: movie.id})),
@@ -126,10 +126,21 @@ const getRecommendationsListById = async (req, res) => {
 
 const getUserRecommendations = async (req, res) => {
   try {
-    const userId = req.userToken.id;
+    const userEmail = req.userToken.email;
+    const userData = await prisma.user.findUnique({
+      where: {email: userEmail},
+      include: {
+        reviews: {
+          include: {
+            movie: true, // Inclure les détails du film pour chaque review
+          },
+        },
+        likes: true, // Inclure les films likés
+      },
+    });
     const recommendations = await prisma.recommendation.findMany({
       where: {
-        userId: userId,
+        userId: userData?.id,
       },
       include: {
         movies: true,
