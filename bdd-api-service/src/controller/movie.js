@@ -32,7 +32,7 @@ const search = async (req, res) => {
     images: JSON.parse(movie.images || '[]'),
   }));
 
-  if (movies.length === 10) {
+  if (movies.length >= 1) {
     return res.json(movies);
   }
 
