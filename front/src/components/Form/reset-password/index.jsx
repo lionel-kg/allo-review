@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './index.module.scss';
 import Input from '@/components/Input';
-import { apiAuth, apiNotif } from '@/config/axios';
-import { useRouter } from 'next/router';
+import {apiAuth, apiNotif} from '@/config/axios';
+import {useRouter} from 'next/router';
 import CustomButton from '@/components/CustomButton';
 import Image from 'next/image';
 
@@ -74,7 +74,12 @@ const Index = () => {
     <div className={'container_page_form'}>
       <div className={styles.container_form}>
         <div className="flex justify_center">
-          <Image src="/logo.png" alt="logo" width={250} height={160} />
+          <Image
+            src="/logo-alloreview.png"
+            alt="logo"
+            width={250}
+            height={160}
+          />
         </div>
         <div className={styles.container_input}>
           {!token ? (
