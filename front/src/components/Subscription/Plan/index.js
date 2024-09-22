@@ -4,7 +4,8 @@ import axios from '@/config/axios';
 import getStripe from '@/utils/get-stripe';
 import {useUser} from '@/context/UserContext';
 
-const Index = ({plan, classe}) => {
+const Index = props => {
+  const {plan, classe, setShowModal} = props;
   const {token, user} = useUser();
 
   const handleSubscription = async (priceId, isTrial) => {
@@ -35,6 +36,8 @@ const Index = ({plan, classe}) => {
       if (error) {
         console.error(error);
       }
+    } else {
+      setShowModal(true);
     }
   };
 
