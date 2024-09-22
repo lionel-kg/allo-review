@@ -64,6 +64,12 @@ const Index = ({onClose}) => {
   };
 
   const handleRecommendations = () => {
+    if (!user) {
+      handleCloseRecommendations();
+      router.push('/login');
+      return;
+    }
+
     setIsLoading(true);
 
     const params = {
