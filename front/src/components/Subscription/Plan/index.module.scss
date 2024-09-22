@@ -7,9 +7,12 @@
   padding: 25px;
   // border: 2px solid #f3d269;
   background-color: rgba(241, 241, 241, 0.8);
-  width: 65%;
+  width: 25%;
   height: 85%;
   color: black;
+  @media (max-width: 768px) {
+    width: 70%;
+  }
   &_name {
     font-size: 1.6rem;
     margin-bottom: 20px;
