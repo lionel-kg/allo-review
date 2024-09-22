@@ -4,16 +4,15 @@ import Cookies from 'js-cookie';
 import CustomButton from '@/components/CustomButton';
 import Subscription from '@/components/Subscription';
 import {useUser} from '@/context/UserContext';
+import Movies from '@/pages/movies/index';
 
 const Index = () => {
   const router = useRouter();
   const {user} = useUser();
 
   return (
-    <div className="container_page custom_margin_top">
-      <div></div>
-      {/* {user ? `Bienvenue ${user?.username}, vous êtes connecté` : 'Bienvenue'} */}
-      <Subscription />
+    <div>
+      <Movies />
     </div>
   );
 };
