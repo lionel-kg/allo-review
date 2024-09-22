@@ -9,8 +9,10 @@ import {IoSettingsOutline, IoHome} from 'react-icons/io5';
 import {MdOutlineSecurity} from 'react-icons/md';
 import {CiCreditCard1} from 'react-icons/ci';
 import options from '@/services/Cookies';
+import {useUser} from '@/context/UserContext';
 
 const Index = () => {
+  const {user, token, setUser, setToken} = useUser();
   const router = useRouter();
 
   const logout = () => {
@@ -20,6 +22,8 @@ const Index = () => {
       .then(user => {
         console.log(user);
         Cookies.remove('jwt', options);
+        setUser(null);
+        setToken(null);
         localStorage.removeItem('token');
       })
       .finally(() => {

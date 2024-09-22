@@ -27,6 +27,14 @@
     }
   }
 }
+.logo_img {
+  width: 150px !important;
+  height: 70px !important;
+  @media (max-width: 798px) {
+    width: 100px !important;
+    height: 50px !important;
+  }
+}
 .section {
   &_one {
     color: white;

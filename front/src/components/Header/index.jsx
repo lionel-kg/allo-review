@@ -40,8 +40,14 @@ const index = () => {
       <nav className={styles.container_header}>
         <div className={styles.section_one}>
           <Link href="/">
-            <p className={styles.logo}>
-              <Image src="/logo.png" alt="logo" width={150} height={70} />
+            <p>
+              <Image
+                className={styles.logo_img}
+                src="/logo.png"
+                alt="logo"
+                width={150}
+                height={70}
+              />
             </p>
           </Link>
           <ul>
@@ -50,11 +56,11 @@ const index = () => {
                 <p>Pricing</p>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link href="/movies">
                 <p>Movies</p>
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link href="/favorites">
                 <p>Favorites</p>
@@ -79,7 +85,7 @@ const index = () => {
           </ul>
         </div>
 
-        <div className={/*styles.section_two + ' ' +*/ styles.logo}>
+        <div className={user ? styles.logo : '' + 'pr-1'}>
           <CustomButton
             label={'logout'}
             classes="full-size"
