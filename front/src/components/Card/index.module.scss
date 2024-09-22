@@ -5,6 +5,7 @@
   width: 180px;
   height: 104px;
   transition: transform 0.3s ease-in-out;
+  cursor: pointer;
 }
 .card_movies:hover {
   transform: scale(1.2) !important;
