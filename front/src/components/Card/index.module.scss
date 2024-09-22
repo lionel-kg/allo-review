@@ -1,42 +1,36 @@
 .card_movies {
-    flex: 0 0 14.7%;
-    text-align: center;
-    color: white;
-    width: 180px;
-    height: 104px;
+  flex: 0 0 14.7%;
+  text-align: center;
+  color: white;
+  width: 180px;
+  height: 104px;
+  transition: transform 0.3s ease-in-out;
 }
 .card_movies:hover {
-    transform: scale(1.2) !important;
-    width: 200px;
-    // height: 300px;
-    &.itemInfo {
-        display: block;
-    }
+  transform: scale(1.2) !important;
+  width: 200px;
+  &.itemInfo {
+    display: block;
+  }
 }
 .card_movies:hover .itemInfo {
-    display: block;
+  display: block;
 }
 
 .bg {
-    z-index: -1;
-    position: fixed;
-    top: 0%;
-    bottom: 0%;
-    left: 0%;
-    right: 0%;
-    background-color: black;
+  z-index: -1;
+  position: fixed;
+  top: 0%;
+  bottom: 0%;
+  left: 0%;
+  right: 0%;
+  background-color: black;
 }
 
 .list_button {
-    display: flex;
-    text-align: right;
+  display: flex;
+  text-align: right;
 }
 .container_card {
-    margin-right: 10px;
+  margin-right: 10px;
 }
-
-/*.listItem{
-    width: 225px;
-    height: 120px;
-    margin-right: 5px;
-}*/
