@@ -86,7 +86,7 @@ const AddReviews = async (movie, appreciations, review) => {
 
 const AddMovie = async (movie, appreciations) => {
   const movieExists = await prisma.movie.findUnique({
-    where: {tmdb_id: movie.id},
+    where: {tmdb_id: movie.tmdb_id ?? movie.id},
   });
 
   if (!movieExists) {
@@ -149,8 +149,8 @@ const AddMovie = async (movie, appreciations) => {
               review,
             );
 
-            totalScore += addedReview.review_score;
-            totalMagnitude += addedReview.review_magnitude;
+            totalScore += addedReview?.review_score || 0;
+            totalMagnitude += addedReview?.review_magnitude || 0;
           }
 
           if (totalScore && totalMagnitude) {
