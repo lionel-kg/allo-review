@@ -14,12 +14,12 @@ router.post('/', async (req, res) => {
     const appreciations = await prisma.appreciation.findMany();
     const review = await AddReviews(movie, appreciations, req.body);
     if (review) {
-      let totalScore = review.review_score;
-      let totalMagnitude = review.review_magnitude;
+      let totalScore = review?.review_score || 0;
+      let totalMagnitude = review?.review_magnitude || 0;
 
       movie.reviews?.map(review => {
-        totalScore += review.review_score;
-        totalMagnitude += review.review_magnitude;
+        totalScore += review?.review_score || 0;
+        totalMagnitude += review?.review_magnitude || 0;
       });
       const globalAppreciation = await GetAppreciation({
         score: totalScore / (movie.reviews.length + 1),
