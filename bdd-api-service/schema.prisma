@@ -20,6 +20,8 @@ model User {
   subscriptions Subscription[] 
   likes     Movie[] @relation("UserLikes")
   reviews   Review[]
+  recommendations  Recommendation[]
+
 }
 
 model Movie {
@@ -37,6 +39,7 @@ model Movie {
   appreciationId Int?
   likedBy        User[]        @relation("UserLikes")
   categories       Category[]   @relation("MovieCategories")
+  recommendations Recommendation[] @relation("RecommendationMovies")
   @@index([title])
 }
 
@@ -106,4 +109,13 @@ model PasswordResetToken {
   token        String    @unique
   email        String
   expiration   DateTime
+}
+
+model Recommendation {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  title      String @default("Liste de suggestions")
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+  movies     Movie[] @relation("RecommendationMovies")
 }

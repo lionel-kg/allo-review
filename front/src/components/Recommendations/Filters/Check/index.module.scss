@@ -1,0 +1,45 @@
+.filter {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+
+  input {
+    display: none;
+  }
+
+  .toggle {
+    position: relative;
+    width: 50px;
+    height: 26px;
+    background-color: #ccc;
+    border-radius: 13px;
+    transition: background-color 0.3s;
+    margin-right: 10px;
+    &:hover {
+      box-shadow: 0 0 0 5px rgba(185, 185, 185, 0.1294117647);
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background-color: white;
+      top: 2px;
+      left: 2px;
+      transition: transform 0.3s;
+    }
+  }
+
+  input:checked + .toggle {
+    background-color: #feb91e;
+
+    &::after {
+      transform: translateX(24px);
+    }
+  }
+
+  .label {
+    font-size: 16px;
+  }
+}

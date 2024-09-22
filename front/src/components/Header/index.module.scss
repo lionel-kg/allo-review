@@ -53,6 +53,24 @@
           cursor: pointer;
           background: none;
         }
+
+        .recommendation {
+          text-align: center;
+          gap: 5px;
+          padding: 10px 30px;
+          border-radius: 5px;
+          background-color: #feb91e;
+          font-size: 16px;
+          font-weight: 600;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: 0.2s ease-in-out;
+          &:hover {
+            box-shadow: 0 0 0 8px rgba(185, 185, 185, 0.1294117647);
+          }
+        }
       }
     }
   }

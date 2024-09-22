@@ -1,0 +1,35 @@
+.filters {
+  margin: 20px 0;
+  &_title {
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+  }
+  &_description {
+    font-size: 16px;
+    color: #2b2b2b;
+    margin-bottom: 10px;
+  }
+  &_row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+  }
+}
+
+.filter {
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin: 0 5px;
+  transition: 0.2s ease-in-out;
+  background-color: #eee;
+  border: 1px solid #aaaaaa61;
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 0 0 5px #b9b9b921;
+  }
+  &_selected {
+    background-color: #feb91e;
+  }
+}

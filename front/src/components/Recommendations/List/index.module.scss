@@ -1,0 +1,36 @@
+.list {
+  display: grid;
+  gap: 50px;
+}
+
+.card {
+  display: flex;
+  gap: 20px;
+
+  &_content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    .title {
+      font-size: 20px;
+      font-weight: 600;
+    }
+    .date {
+      font-size: 16px;
+    }
+  }
+}
+
+.image_container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  max-width: 300px;
+}
+
+.image_wrapper {
+  position: relative; /* Pour que l'image remplisse toute la cellule */
+  width: 100%;
+  height: 100%;
+}

@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 const createAxiosInstance = (baseURL, headers = null, params = null) => {
   const instance = axios.create({
     baseURL: baseURL,
-    timeout: 10000,
+    timeout: 30000,
     headers,
     params,
   });

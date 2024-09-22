@@ -7,7 +7,8 @@ const movieRouter = require('./movie.route');
 const reviewRouter = require('./review.route');
 const genreRouter = require('./genre.route');
 const categoryRouter = require('./category.route');
-const resetPasswordTokenRouter = require("./resetPasswordtoken.route")
+const resetPasswordTokenRouter = require('./resetPasswordtoken.route');
+const recommendationsRouter = require('./recommendation.route');
 
 router.use('/user', userRouter);
 router.use('/code', codeRouter);
@@ -17,6 +18,6 @@ router.use('/genre', genreRouter);
 router.use('/subscription', subscriptionRouter);
 router.use('/category', categoryRouter);
 router.use('/reset-password-token', resetPasswordTokenRouter);
-
+router.use('/recommendations', recommendationsRouter);
 
 module.exports = router;

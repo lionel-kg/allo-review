@@ -1,0 +1,25 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  row-gap: 3rem;
+
+  &::after {
+    content: '';
+    flex-grow: 1000000000;
+  }
+  &_card {
+    flex-grow: 1;
+    a {
+      display: table;
+    }
+
+    .title {
+      font-weight: bold;
+      font-size: 18px;
+      margin-top: 10px;
+      display: table-caption;
+      caption-side: bottom;
+    }
+  }
+}

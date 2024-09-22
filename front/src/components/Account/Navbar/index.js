@@ -5,8 +5,12 @@ import {apiAuth} from '@/config/axios';
 import Button from '@/components/Account/Button';
 import styles from './index.module.scss';
 import {useRouter} from 'next/router';
-import {IoSettingsOutline, IoHome} from 'react-icons/io5';
-import {MdOutlineSecurity} from 'react-icons/md';
+import {IoHome} from 'react-icons/io5';
+import {
+  MdOutlineSecurity,
+  MdFavoriteBorder,
+  MdOutlinePlaylistPlay,
+} from 'react-icons/md';
 import {CiCreditCard1} from 'react-icons/ci';
 import options from '@/services/Cookies';
 import {useUser} from '@/context/UserContext';
@@ -34,7 +38,7 @@ const Index = () => {
   const navItems = [
     {text: 'Présentation', path: '/account', icon: <IoHome />},
     {
-      text: 'Abonnement',
+      text: 'Subscription',
       path: '/account/membership',
       icon: <CiCreditCard1 />,
     },
@@ -44,9 +48,14 @@ const Index = () => {
       icon: <MdOutlineSecurity />,
     },
     {
-      text: 'Paramètres',
-      path: '/account/parameters',
-      icon: <IoSettingsOutline />,
+      text: 'My likes',
+      path: '/favorites',
+      icon: <MdFavoriteBorder />,
+    },
+    {
+      text: 'My recommendations',
+      path: '/recommendations',
+      icon: <MdOutlinePlaylistPlay />,
     },
   ];
 

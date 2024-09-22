@@ -1,0 +1,17 @@
+.filter {
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: 0.2s ease-in-out;
+  background-color: #eee;
+  border: 1px solid #aaaaaa61;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 0 0 5px #b9b9b921;
+  }
+  &_selected {
+    background-color: #feb91e;
+  }
+}

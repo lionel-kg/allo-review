@@ -7,11 +7,12 @@ import Cookies from 'js-cookie';
 import {apiAuth} from '@/config/axios';
 
 import {IoIosSearch} from 'react-icons/io';
+import {BsStars} from 'react-icons/bs';
 
 import CustomButton from '@/components/CustomButton';
 import Button from '@/components/Button';
 import SearchBar from '@/components/SearchBar';
-
+import Recommendations from '@/components/Recommendations';
 import styles from './index.module.scss';
 import options from '@/services/Cookies';
 import {useUser} from '@/context/UserContext';
@@ -20,6 +21,7 @@ const index = () => {
   const {user, token, setUser, setToken} = useUser();
   const router = useRouter();
   const [showSearch, setShowSearch] = useState(false);
+  const [showRecommendations, setShowRecommendations] = useState(false);
 
   const logout = () => {
     apiAuth
@@ -82,6 +84,14 @@ const index = () => {
                 icon={<IoIosSearch />}
               />
             </li>
+            <li>
+              <Button
+                onClick={() => setShowRecommendations(true)}
+                icon={<BsStars />}
+                classes={styles.recommendation}
+                text="Find a movie"
+              />
+            </li>
           </ul>
         </div>
 
@@ -97,6 +107,9 @@ const index = () => {
         </div>
 
         {showSearch && <SearchBar onClose={() => setShowSearch(false)} />}
+        {showRecommendations && (
+          <Recommendations onClose={() => setShowRecommendations(false)} />
+        )}
       </nav>
     )
   );
