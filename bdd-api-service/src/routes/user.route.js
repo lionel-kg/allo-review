@@ -35,6 +35,7 @@ router.post('/exists', async (req, res) => {
   try {
     const users = await prisma.user.findFirst({
       where: {email: req.body.email},
+      include: {subscriptions: true},
     });
     res.json(users);
   } catch (error) {

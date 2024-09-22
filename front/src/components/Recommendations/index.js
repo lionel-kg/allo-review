@@ -69,7 +69,11 @@ const Index = ({onClose}) => {
       router.push('/login');
       return;
     }
-
+    if (user && user.subscriptions.length <= 0) {
+      handleCloseRecommendations();
+      router.push('/pricing');
+      return;
+    }
     setIsLoading(true);
 
     const params = {

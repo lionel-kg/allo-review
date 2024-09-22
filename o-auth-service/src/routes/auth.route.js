@@ -223,7 +223,7 @@ router.post('/login', async (req, res) => {
 
     const passwordMatch = await bcrypt.compare(password, user.data.password);
     if (!passwordMatch) {
-      return res.status(401).json({message: 'Mot de passe incorrect.'});
+      return res.status(200).json([]);
     }
 
     const token = generateToken({id: user.data.id, email: user.data.email});

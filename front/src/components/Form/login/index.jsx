@@ -38,24 +38,29 @@ const index = props => {
   };
 
   const submit = () => {
-    apiAuth
-      .post('/auth/login', {
-        email: email,
-        password: password,
-      })
-      .then(res => {
-        console.log(res);
-        if (res.data.token) {
-          Cookies.set('jwt', res?.data.token, options);
-          setErrorMessage(undefined);
-          if (isModal === false) {
-            router.push('/movies');
+    try {
+      apiAuth
+        .post('/auth/login', {
+          email: email,
+          password: password,
+        })
+        .then(res => {
+          console.log(res);
+          if (res.data.token) {
+            Cookies.set('jwt', res?.data.token, options);
+            setErrorMessage(undefined);
+            if (isModal === false) {
+              router.push('/movies');
+            }
+          } else {
+            setErrorMessage('Email or password incorrect.');
+            console.log(errorMessage);
           }
-        } else {
-          setErrorMessage('Email or password incorrect.');
-          console.log(errorMessage);
-        }
-      });
+        });
+    } catch (err) {
+      console.error(err);
+      setErrorMessage('Erreur lors de la connexion');
+    }
   };
 
   return (
