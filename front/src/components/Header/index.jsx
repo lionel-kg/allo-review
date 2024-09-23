@@ -84,8 +84,13 @@ const index = () => {
                 <Button
                   onClick={() => setShowRecommendations(true)}
                   icon={<BsStars />}
-                  classes={styles.recommendation}
+                  classes={`${styles.recommendation} ${styles.desktop}`}
                   text="Find a movie"
+                />
+                <Button
+                  onClick={() => setShowRecommendations(true)}
+                  icon={<BsStars />}
+                  classes={`${styles.recommendation} ${styles.mobile}`}
                 />
               </li>
             </ul>
