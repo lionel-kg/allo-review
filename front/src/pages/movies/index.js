@@ -66,14 +66,14 @@ const Index = () => {
   }, [loading]);
 
   return (
-    <div className="mt-8">
+    <div>
       {trueLoading === true ? (
         'Loading'
       ) : (
         <>
           <Banner movie={movieBanner} />
 
-          <div className="">
+          <div>
             <Row title={'Trending movies'} movies={trendingMovies} />
             <Row title={'Top rated'} movies={topRatedMovies} />
             <Row title={'Action movies'} movies={actionMovies} />
