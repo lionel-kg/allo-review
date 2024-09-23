@@ -54,7 +54,7 @@ const Index = ({movie, isLiked, toggleLike, openReview}) => {
             <div className={styles.overview_action}>
               <Button
                 classes={styles.like_btn}
-                text={isLiked ? 'Remove' : 'Add to My List'}
+                text={isLiked ? 'Remove' : 'Add to favorites'}
                 onClick={toggleLike}
                 icon={
                   isLiked ? (
