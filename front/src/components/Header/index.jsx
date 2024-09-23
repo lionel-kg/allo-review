@@ -52,47 +52,44 @@ const index = () => {
               />
             </p>
           </Link>
-          <ul>
-            <li>
-              <Link href="/pricing">
-                <p>Pricing</p>
-              </Link>
-            </li>
-            {/* <li>
-              <Link href="/movies">
-                <p>Movies</p>
-              </Link>
-            </li> */}
-            <li>
-              <Link href="/favorites">
-                <p>Favorites</p>
-              </Link>
-            </li>
-            {user ? (
+          {router.asPath !== '/login' && (
+            <ul>
               <li>
-                <Link href="/account">
-                  <p>Account</p>
+                <Link href="/pricing">
+                  <p>Pricing</p>
                 </Link>
               </li>
-            ) : (
-              <></>
-            )}
-            <li>
-              <Button
-                classes={styles.search}
-                onClick={() => setShowSearch(true)}
-                icon={<IoIosSearch />}
-              />
-            </li>
-            <li>
-              <Button
-                onClick={() => setShowRecommendations(true)}
-                icon={<BsStars />}
-                classes={styles.recommendation}
-                text="Find a movie"
-              />
-            </li>
-          </ul>
+              {user && (
+                <>
+                  <li>
+                    <Link href="/favorites">
+                      <p>Favorites</p>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/account">
+                      <p>Account</p>
+                    </Link>
+                  </li>
+                </>
+              )}
+              <li>
+                <Button
+                  classes={styles.search}
+                  onClick={() => setShowSearch(true)}
+                  icon={<IoIosSearch />}
+                />
+              </li>
+              <li>
+                <Button
+                  onClick={() => setShowRecommendations(true)}
+                  icon={<BsStars />}
+                  classes={styles.recommendation}
+                  text="Find a movie"
+                />
+              </li>
+            </ul>
+          )}
         </div>
 
         <div className={user ? styles.logo : '' + 'pr-1'}>
