@@ -51,14 +51,19 @@ svg {
   background-color: #090a0b;
   font-family: 'Inter', sans-serif;
   @media (max-width: 768px) {
-    margin: 0;
-    padding: 100px 0px 0px 0px;
+    flex-direction: column;
   }
 }
 
 .account_content {
   width: 100%;
   padding-right: 50px;
+
+  @media (max-width: 768px) {
+    margin: 0 20px;
+    width: initial;
+    padding-right: initial;
+  }
 }
 
 html,
