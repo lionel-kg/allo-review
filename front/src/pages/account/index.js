@@ -71,28 +71,28 @@ const Index = () => {
     <div>
       <Title title={'Account'} />
       {isLoading ? (
-        <p>Chargement en cours...</p> // Afficher un spinner ou un message pendant le chargement
+        <p>Loading...</p>
       ) : subscription ? (
         <Card title={'Abonnement'}>
           <CardRow
             title={subscription?.name}
-            subtitle={`Date d'expiration : ${subscription?.current_period_end}`}
-            details={`Mode de paiement : ${subscription?.cardNumber}`}
+            subtitle={`Expiration date : ${subscription?.current_period_end}`}
+            details={`Payment method : ${subscription?.cardNumber}`}
           />
           <CardRow
-            title={"Gérer l'abonnement"}
+            title={'Manage subscription'}
             onClick={() => handleManageSubscription()}
             topBorder
           />
         </Card>
       ) : (
-        <p>Vous n'avez pas d'abonnement</p>
+        <p>You don't have any subscription</p>
       )}
 
       <Card title={'Informations'}>
         {subscription && (
           <CardRow
-            title={"Changer d'offre"}
+            title={'Change your offer'}
             icon={<CiCreditCard1 />}
             topBorder
           />
@@ -108,7 +108,7 @@ const Index = () => {
             );
             setShowModal(true);
           }}
-          title={'Mettre à jour ses informations'}
+          title={'Update your informations'}
           icon={<MdOutlineSecurity />}
           topBorder
         />

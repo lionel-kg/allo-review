@@ -36,7 +36,7 @@ const Index = () => {
   };
 
   const navItems = [
-    {text: 'Présentation', path: '/account', icon: <IoHome />},
+    {text: 'Presentation', path: '/account', icon: <IoHome />},
     {
       text: 'Subscription',
       path: '/account/membership',
@@ -81,7 +81,7 @@ const Index = () => {
         ))}
         <li>
           <Button
-            text={'Se déconnecter'}
+            text={'Disconnect'}
             onClick={() => {
               logout();
             }}

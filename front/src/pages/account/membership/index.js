@@ -54,30 +54,30 @@ const Index = () => {
       <Title title={'Membership'} />
       {subscription ? (
         <>
-          <Card title={"Détails de l'offre"}>
+          <Card title={'Offer details'}>
             <CardRow
               title={subscription?.name}
               subtitle={subscription?.description}
             />
             <CardRow
-              title={"Gérer l'abonnement"}
+              title={'Manage subscription'}
               onClick={() => handleManageSubscription()}
               topBorder
             />
-            <CardRow title={"Changer d'offre"} topBorder />
+            <CardRow title={'Change your offer'} topBorder />
           </Card>
-          <Card title={'Informations de paiement'}>
+          <Card title={'Payment informations'}>
             <CardRow
-              title={'Prochain paiement'}
+              title={'Next payment'}
               subtitle={subscription?.current_period_end}
               details={subscription?.cardNumber}
             />
-            <CardRow title={'Gérer votre mode de paiement'} topBorder />
+            <CardRow title={'Manage your payment method'} topBorder />
           </Card>
         </>
       ) : (
         <>
-          <p>Vous n'avez pas encore d'abonnement</p>
+          <p>You don't have any subscription</p>
         </>
       )}
     </div>
