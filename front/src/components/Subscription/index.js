@@ -12,19 +12,39 @@ const Index = () => {
   // Exemple
   const plans = [
     {
+      name: 'Pack Gratuit',
+      price: '0€ / mois',
+      priceValue: 'price_1P6YD9ItkzdIGiy5oYtO235j',
+      callToAction: 'Gratuit',
+      advantages: [
+        '5 recommendations',
+        'Limited filters access',
+        'Review limited to 1000 characters',
+        'Advertising',
+      ],
+      isFree: true,
+      isTrial: true,
+    },
+    {
       name: 'Pack Standard',
-      price: '9.99€ / mois',
+      price: '4.99€ / mois',
       priceValue: 'price_1P6YD9ItkzdIGiy5oYtO235j',
       callToAction: "S'abonner",
-      advantages: ['Avantage 1', 'Avantage 2'],
+      advantages: [
+        'Unlimited recommendations',
+        'Access to all filters',
+        'Unlimited reviews',
+        'No advertising',
+      ],
       isTrial: false,
+      isFree: false,
     },
   ];
 
   return (
     <div className={styles.subscription}>
       <h3 className={styles.subscription_title}>
-        A more effective way to track progress
+        Upgrade for More Features and Flexibility
       </h3>
 
       <div className={styles.subscription_pricing}>

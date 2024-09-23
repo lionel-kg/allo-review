@@ -3,13 +3,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   &_title {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 75px;
+    font-size: 32px;
+    font-weight: 700;
   }
 
   &_pricing {
     display: flex;
+    gap: 50px;
     width: 100%;
     height: 45vh;
     justify-content: center;
@@ -17,16 +21,16 @@
 }
 
 .reverse {
-  //   background-color: #f1b901 !important;
-  background-color: rgba(243, 211, 105, 0.8) !important;
-  color: white !important;
+  background: linear-gradient(#090a0b 0 0) padding-box,
+    linear-gradient(to bottom, #f3d269 0%, #f3d26963 50%, #f3d26914 100%)
+      border-box !important;
   button {
-    background-color: white !important;
+    background-color: #f3d269 !important;
     color: black !important;
     &:hover {
       cursor: pointer;
-      background-color: black !important;
-      color: white !important;
+      // background-color: black !important;
+      // color: white !important;
     }
   }
 }

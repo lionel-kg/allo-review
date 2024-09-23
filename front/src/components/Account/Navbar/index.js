@@ -42,11 +42,11 @@ const Index = () => {
       path: '/account/membership',
       icon: <CiCreditCard1 />,
     },
-    {
-      text: 'Informations',
-      path: '/account/informations',
-      icon: <MdOutlineSecurity />,
-    },
+    // {
+    //   text: 'Informations',
+    //   path: '/account/informations',
+    //   icon: <MdOutlineSecurity />,
+    // },
     {
       text: 'My likes',
       path: '/favorites',

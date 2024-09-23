@@ -4,7 +4,12 @@ import Image from 'next/image';
 import styles from './index.module.scss';
 import ColorThief from 'colorthief';
 import Button from '@/components/Button';
-import {MdOutlinePlaylistAdd, MdEdit, MdClose} from 'react-icons/md';
+import {
+  MdOutlinePlaylistAdd,
+  MdOutlinePlaylistRemove,
+  MdEdit,
+  MdClose,
+} from 'react-icons/md';
 import {FaPlay, FaStar, FaStarHalfAlt} from 'react-icons/fa';
 import YouTube from 'react-youtube';
 import {Tooltip} from 'react-tooltip';
@@ -49,10 +54,14 @@ const Index = ({movie, isLiked, toggleLike, openReview}) => {
             <div className={styles.overview_action}>
               <Button
                 classes={styles.like_btn}
-                text={isLiked ? 'Remove from My List' : 'Add to My List'}
+                text={isLiked ? 'Remove' : 'Add to My List'}
                 onClick={toggleLike}
                 icon={
-                  isLiked ? <MdOutlinePlaylistAdd /> : <MdOutlinePlaylistAdd />
+                  isLiked ? (
+                    <MdOutlinePlaylistRemove />
+                  ) : (
+                    <MdOutlinePlaylistAdd />
+                  )
                 }
               />
               <Button
@@ -80,7 +89,12 @@ const Index = ({movie, isLiked, toggleLike, openReview}) => {
               )}
             </div>
 
-            <p className={styles.hero_description}>{movie.overview}</p>
+            <p className={styles.hero_description}>
+              {movie.genres
+                .slice(0, 3)
+                .map(genre => genre.name)
+                .join(' / ')}
+            </p>
           </div>
         </div>
         <div className={styles.hero_backdrop}>

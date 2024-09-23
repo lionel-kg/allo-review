@@ -1,41 +1,65 @@
 .plan {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-
   border-radius: 15px;
   padding: 25px;
-  // border: 2px solid #f3d269;
-  background-color: rgba(241, 241, 241, 0.8);
+  background: linear-gradient(#090a0b 0 0) padding-box,
+    linear-gradient(
+        to bottom,
+        #6c6c6c 0%,
+        rgba(89, 89, 89, 0.39) 50%,
+        #6c6c6c14 100%
+      )
+      border-box;
+  border: 2px solid transparent;
+  color: white;
   width: 25%;
   height: 85%;
-  color: black;
   @media (max-width: 768px) {
     width: 70%;
   }
+
   &_name {
-    font-size: 1.6rem;
+    font-size: 20px;
+    font-weight: 500;
     margin-bottom: 20px;
   }
 
+  &_price {
+    font-size: 28px;
+    font-weight: 700;
+  }
   &_button {
     background-color: black;
     color: white;
-    padding: 10px 20px;
+    padding: 15px 20px;
     margin: 20px 0;
     border-radius: 5px;
     border: 1px solid transparent;
+    background-color: #f3d269;
+    color: black;
+    font-weight: bold;
     transition: 0.2s ease-in-out;
-    &:hover {
+    &:disabled {
+      background-color: #090a0b;
+      color: #808080;
+      border: 1px solid #6c6c6c;
+    }
+    &:not(:disabled):hover {
       cursor: pointer;
-      background-color: #f3d269;
-      color: black;
+      box-shadow: 0 0 0 8px #ffffff1c;
+      background-color: #ffdc6e;
     }
   }
 
   ul {
     li {
-      padding: 5px 0;
+      &:not(:nth-last-child(1)) {
+        margin-bottom: 20px;
+      }
+      span {
+        margin-right: 10px;
+      }
     }
   }
 }

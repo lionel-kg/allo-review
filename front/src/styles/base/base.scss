@@ -5,6 +5,7 @@ html,
   width: 100%;
   padding: 0;
   margin: 0;
+  font-family: 'Inter', sans-serif;
 }
 main {
   @media (max-width: 768px) {
@@ -15,7 +16,6 @@ main {
   width: 100vw;
   overflow-x: hidden;
   background-color: #090a0b;
-  font-family: 'Inter', sans-serif;
   color: white;
 }
 
@@ -49,7 +49,6 @@ svg {
   flex-direction: row;
   width: 100%;
   background-color: #090a0b;
-  padding: 150px 20px 20px 20px;
   font-family: 'Inter', sans-serif;
   @media (max-width: 768px) {
     margin: 0;
@@ -59,6 +58,7 @@ svg {
 
 .account_content {
   width: 100%;
+  padding-right: 50px;
 }
 
 html,

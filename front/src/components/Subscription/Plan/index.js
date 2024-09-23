@@ -49,7 +49,8 @@ const Index = props => {
         className={styles.plan_button}
         onClick={() => {
           handleSubscription(plan.priceValue, plan.isTrial);
-        }}>
+        }}
+        disabled={plan.isFree}>
         {plan.callToAction}
       </button>
       <ul>

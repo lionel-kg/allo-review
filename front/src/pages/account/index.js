@@ -112,7 +112,7 @@ const Index = () => {
           icon={<MdOutlineSecurity />}
           topBorder
         />
-        <CardRow
+        {/* <CardRow
           title={'Mettre à jour le mot de passe'}
           icon={<CiLock />}
           topBorder
@@ -122,7 +122,7 @@ const Index = () => {
           subtitle={'Langues, thèmes, notifications, confidentialité et plus'}
           icon={<IoSettingsOutline />}
           topBorder
-        />
+        /> */}
       </Card>
 
       <Modal modalStatut={showModal} setShowModal={setShowModal}>
