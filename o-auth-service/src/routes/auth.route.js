@@ -218,12 +218,12 @@ router.post('/login', async (req, res) => {
     console.log(user.data);
     console.log(email);
     if (!user.data) {
-      return res.status(200).json([]);
+      return res.status(404).json({message: "This emai doesn't exists."});
     }
 
     const passwordMatch = await bcrypt.compare(password, user.data.password);
     if (!passwordMatch) {
-      return res.status(200).json([]);
+      return res.status(401).json({message: 'Wrong password.'});
     }
 
     const token = generateToken({id: user.data.id, email: user.data.email});
@@ -251,9 +251,7 @@ router.post('/register', async (req, res) => {
 
     // Si l'utilisateur existe déjà, renvoyer un message d'erreur
     if (existingUser.data) {
-      return res
-        .status(400)
-        .json({message: "Nom d'utilisateur ou email déjà utilisé."});
+      return res.status(400).json({message: 'Username or email already used'});
     }
     console.log(password);
     // Hasher le mot de passe avant de l'enregistrer dans la base de données

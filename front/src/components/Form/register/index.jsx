@@ -4,16 +4,16 @@ import Input from '@/components/Input';
 import {apiAuth} from '@/config/axios';
 import {useRouter} from 'next/router';
 import CustomButton from '@/components/CustomButton';
-import {redirect} from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import Cookies from 'js-cookie';
 import options from '@/services/Cookies';
 
-const index = () => {
+const Index = () => {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState(''); // New state for error message
   const router = useRouter();
 
   const ssoLogin = service => {
@@ -27,6 +27,8 @@ const index = () => {
   };
 
   const submit = () => {
+    setErrorMessage(''); // Clear error message before submission
+
     apiAuth
       .post('/auth/register', {
         username: username,
@@ -36,6 +38,14 @@ const index = () => {
       .then(user => {
         Cookies.set('jwt', user.data.token, options);
         router.push('/movies');
+      })
+      .catch(err => {
+        // Capture error response and update errorMessage state
+        if (err.response && err.response.data) {
+          setErrorMessage(err.response.data.message); // Set error message from server response
+        } else {
+          setErrorMessage("Une erreur s'est produite lors de l'inscription.");
+        }
       });
   };
 
@@ -50,9 +60,10 @@ const index = () => {
             height={160}
           />
         </div>
+
         <div className={styles.container_input}>
           <Input
-            label="username"
+            label="Username"
             type="text"
             value={username}
             onChange={e => setUsername(e.target.value)}
@@ -76,15 +87,17 @@ const index = () => {
             required
           />
         </div>
+
+        {errorMessage && (
+          <div>
+            <p style={{color: 'red'}}>{errorMessage}</p>
+          </div>
+        )}
+
         <div className="p-2">
-          <CustomButton
-            label="Valider"
-            classes="full-size"
-            onclick={() => {
-              submit();
-            }}
-          />
+          <CustomButton label="Valider" classes="full-size" onclick={submit} />
         </div>
+
         <div className={styles.container_ssolog + ' justify_between p-2'}>
           <div>
             <i
@@ -98,7 +111,7 @@ const index = () => {
               onClick={() => ssoLogin('discord')}></i>
           </div>
           <div className="center_vertical">
-            <Link href="/login">Se connecter</Link>
+            <Link href="/login">Sign in</Link>
           </div>
         </div>
       </div>
@@ -106,4 +119,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
