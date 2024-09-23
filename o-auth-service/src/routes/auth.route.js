@@ -218,7 +218,7 @@ router.post('/login', async (req, res) => {
     console.log(user.data);
     console.log(email);
     if (!user.data) {
-      return res.status(404).json({message: "This emai doesn't exists."});
+      return res.status(404).json({message: "This email doesn't exists."});
     }
 
     const passwordMatch = await bcrypt.compare(password, user.data.password);
