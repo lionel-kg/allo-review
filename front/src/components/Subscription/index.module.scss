@@ -3,7 +3,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
   &_title {
     text-align: center;
     margin-bottom: 75px;
@@ -17,6 +16,7 @@
     width: 100%;
     height: 45vh;
     justify-content: center;
+    flex-wrap: wrap;
   }
 }
 

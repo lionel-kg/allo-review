@@ -1,10 +1,47 @@
 .container {
-    &_section_review {
-        display: flex;
-        flex-direction: column;
-        border-bottom: 1px solid rgb(31, 40, 49);
-        overflow: hidden;
-        padding: 15px 0 18px;
-        width: 100%;
+  &_section_review {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 20px 0;
+    border-radius: 5px;
+    max-width: 100%;
+    &:not(:last-child) {
+      border-bottom: 1px solid rgb(31, 40, 49);
     }
+  }
+}
+
+.review_content {
+  font-size: 1rem;
+  line-height: 1.6;
+  position: relative;
+}
+
+.expand_toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  .arrow {
+    display: inline-block;
+    margin-right: 8px;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    border-right: 2px solid #f7f7f7;
+    border-bottom: 2px solid #f7f7f7;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .arrow_up {
+    transform: rotate(-135deg);
+  }
+
+  .arrow_down {
+    transform: rotate(45deg);
+  }
 }

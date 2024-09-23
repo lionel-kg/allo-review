@@ -12,23 +12,32 @@ const Index = props => {
   const [loading, setLoading] = useState(true);
   const responsive = {
     superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: {max: 4000, min: 3000},
-      items: 4,
-      slidesToSlide: 4,
+      breakpoint: {max: 4000, min: 1920},
+      items: 12,
+      slidesToSlide: 12,
+    },
+    largeDesktop: {
+      breakpoint: {max: 1920, min: 1440},
+      items: 8,
+      slidesToSlide: 8,
     },
     desktop: {
-      breakpoint: {max: 3000, min: 1024},
+      breakpoint: {max: 1440, min: 1024},
       items: 6,
-      slidesToSlide: 4,
+      slidesToSlide: 6,
     },
     tablet: {
-      breakpoint: {max: 1024, min: 464},
-      items: 4,
-      slidesToSlide: 4,
+      breakpoint: {max: 1024, min: 768},
+      items: 5,
+      slidesToSlide: 5,
     },
     mobile: {
-      breakpoint: {max: 464, min: 0},
+      breakpoint: {max: 768, min: 480},
+      items: 3,
+      slidesToSlide: 3,
+    },
+    smallMobile: {
+      breakpoint: {max: 480, min: 0},
       items: 2,
       slidesToSlide: 2,
     },
@@ -52,30 +61,27 @@ const Index = props => {
 
   return (
     <div className={styles.row}>
-      <>
-        <h2 className={styles.row_title}>{title}</h2>
-        <Carousel
-          swipeable={true}
-          draggable={false}
-          showDots={false}
-          responsive={responsive}
-          ssr={true}
-          infinite={true}
-          autoPlay={false}
-          shouldResetAutoplay={false}
-          keyBoardControl={true}
-          removeArrowOnDeviceType={['tablet', 'mobile']}
-          itemClass="list_movies carousel-item-padding-5-px">
-          {movies &&
-            movies.map(movie => {
-              return (
-                <div key={movie.id}>
-                  <Card movie={movie} />
-                </div>
-              );
-            })}
-        </Carousel>
-      </>
+      <h2 className={styles.row_title}>{title}</h2>
+      <Carousel
+        swipeable={true}
+        draggable={false}
+        showDots={false}
+        responsive={responsive}
+        ssr={true}
+        infinite={true}
+        autoPlay={false}
+        shouldResetAutoplay={false}
+        keyBoardControl={true}
+        removeArrowOnDeviceType={['tablet', 'mobile']}>
+        {movies &&
+          movies.map(movie => {
+            return (
+              <div key={movie.id} className={styles.container_card}>
+                <Card movie={movie} />
+              </div>
+            );
+          })}
+      </Carousel>
     </div>
   );
 };

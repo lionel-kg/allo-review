@@ -1,21 +1,16 @@
 .card_movies {
-  flex: 0 0 14.7%;
-  text-align: center;
   color: white;
-  width: 180px;
-  height: 104px;
   transition: transform 0.3s ease-in-out;
   cursor: pointer;
+  margin-bottom: 20px;
 }
 .card_movies:hover {
-  transform: scale(1.2) !important;
-  width: 200px;
-  &.itemInfo {
-    display: block;
-  }
+  transform: scale(1.075) !important;
 }
-.card_movies:hover .itemInfo {
-  display: block;
+
+.title_movies {
+  margin-top: 10px;
+  text-align: left;
 }
 
 .bg {
@@ -34,4 +29,10 @@
 }
 .container_card {
   margin-right: 10px;
+}
+
+.container_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

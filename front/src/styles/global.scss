@@ -117,21 +117,21 @@
   -ms-touch-action: pan-y;
   touch-action: pan-y;
 }
-.react-multi-carousel-list {
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  position: relative;
-  height: 240px;
-}
-.react-multi-carousel-item {
-  z-index: -3;
-  width: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 300px;
-}
+// .react-multi-carousel-list {
+//   display: flex;
+//   align-items: center;
+//   overflow: hidden;
+//   position: relative;
+//   height: 240px;
+// }
+// .react-multi-carousel-item {
+//   z-index: -3;
+//   width: 0;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   height: 300px;
+// }
 .react-multiple-carousel__arrow {
   // height: 100%;
 }

@@ -1,7 +1,7 @@
 import {React, useEffect, useState} from 'react';
 import styles from './index.module.scss';
 import {useRouter} from 'next/router';
-
+import Image from 'next/image';
 const Index = props => {
   const {movie} = props;
   const router = useRouter();
@@ -11,7 +11,7 @@ const Index = props => {
 
   useEffect(() => {
     const images = JSON.parse(movie.images);
-    setBackdrop(images[1].path);
+    setBackdrop(images[0].path);
   }, [movie]);
 
   const mouseOnCard = () => {
@@ -34,19 +34,24 @@ const Index = props => {
   };
 
   return (
-    <>
-      <div
-        className={styles.card_movies}
-        id={movie.title}
-        onClick={() => showDetail(movie.id)}
-        onMouseOver={mouseOnCard}
-        onMouseOut={mouseOutsideCard}>
-        <img src={`https://image.tmdb.org/t/p/w185/${backdrop}`} />
-        <div className={styles.itemInfo}>
-          <div className={styles.title_movies}>{movie?.title}</div>
-        </div>
+    <div
+      className={styles.card_movies}
+      id={movie.title}
+      onClick={() => showDetail(movie.id)}
+      onMouseOver={mouseOnCard}
+      onMouseOut={mouseOutsideCard}>
+      <div className={styles.container_image}>
+        <Image
+          src={`https://image.tmdb.org/t/p/w500/${backdrop}`}
+          alt={movie.title}
+          width={500}
+          height={750}
+          layout="responsive"
+        />
       </div>
-    </>
+
+      <div className={styles.title_movies}>{movie?.title}</div>
+    </div>
   );
 };
 

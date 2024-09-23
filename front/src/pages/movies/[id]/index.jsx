@@ -7,7 +7,8 @@ import ReviewSection from '@/components/ReviewSection';
 import MovieHero from '@/components/Movies/MovieHero';
 import Modal from '@/components/Modal';
 import {apiBdd} from '@/config/axios';
-
+import Button from '@/components/Button';
+import {MdEdit} from 'react-icons/md';
 const Index = () => {
   const {token, user} = useUser();
   const router = useRouter();
@@ -120,10 +121,29 @@ const Index = () => {
         toggleLike={toggleLike}
         openReview={() => setShowModal(true)}
       />
-      <div className={styles.container_review}>
-        <div className={styles.box_review}>
-          <div>
-            <h1 className={styles.section_title}> List of reviews</h1>
+      <div className={styles.container_section}>
+        <div className={styles.container_overview}>
+          <h1 className={styles.section_title}>Resume</h1>
+          <p className={styles.overview}>{movie.overview}</p>
+          <p className={styles.genres}>
+            <span>Genres </span>
+            {movie.genres
+              .slice(0, 3)
+              .map(genre => genre.name)
+              .join(' - ')}
+          </p>
+        </div>
+        <div className={styles.container_review}>
+          <div className={styles.box_review}>
+            <div className={styles.section_title}>
+              <h1>List of reviews</h1>
+              <Button
+                text="Add a review"
+                onClick={() => setShowModal(true)}
+                classes={styles.btn_add_review}
+                icon={<MdEdit />}
+              />
+            </div>
             {movie && movie.reviews.length > 0 ? (
               movie.reviews.map(review => {
                 return <ReviewSection review={review} />;
