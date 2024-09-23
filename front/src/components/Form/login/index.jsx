@@ -12,10 +12,12 @@ import options from '@/services/Cookies';
 import Button from '@/components/Button';
 
 import {LuX} from 'react-icons/lu';
+import {useUser} from '@/context/UserContext';
 
 const index = props => {
+  const {user, token, setUser, setToken} = useUser();
   const {isModal, setShowModal} = props;
-  const [user, setUser] = useState({});
+  // const [user, setUser] = useState({});
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -45,9 +47,7 @@ const index = props => {
       })
       .then(res => {
         Cookies.set('jwt', res.data.token, options);
-        if (isModal === false) {
-          router.push('/movies');
-        }
+        router.push('/movies');
       })
       .catch(err => {
         // Capture error response and update errorMessage state
