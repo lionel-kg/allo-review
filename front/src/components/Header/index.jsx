@@ -36,6 +36,10 @@ const index = () => {
       });
   };
 
+  const login = () => {
+    router.push('/login');
+  };
+
   return (
     router.asPath !== '/register' &&
     router.asPath !== '/reset-password' && (
@@ -68,7 +72,7 @@ const index = () => {
               </li>
               {user && (
                 <>
-                  <li>
+                  <li className={styles.favorites}>
                     <Link href="/favorites">
                       <p>Favorites</p>
                     </Link>
@@ -97,16 +101,29 @@ const index = () => {
           )}
         </div>
 
-        <div className={user ? styles.logo : '' + 'pr-1'}>
-          <CustomButton
-            label={'logout'}
-            classes="full-size"
-            icon="pi-sign-out"
-            onclick={() => {
-              logout();
-            }}
-          />
-        </div>
+        {user ? (
+          <div className={user ? styles.logo : '' + 'pr-1'}>
+            <CustomButton
+              label={'logout'}
+              classes="full-size"
+              icon="pi-sign-out"
+              onclick={() => {
+                logout();
+              }}
+            />
+          </div>
+        ) : (
+          <div className={user ? styles.logo : '' + 'pr-1'}>
+            <CustomButton
+              label={'login'}
+              classes="full-size"
+              icon="pi-sign-in"
+              onclick={() => {
+                login();
+              }}
+            />
+          </div>
+        )}
 
         {showSearch && <SearchBar onClose={() => setShowSearch(false)} />}
         {showRecommendations && (
