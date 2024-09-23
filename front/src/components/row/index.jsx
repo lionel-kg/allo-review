@@ -45,19 +45,6 @@ const Index = props => {
   useEffect(() => {
     setMyList(JSON.parse(localStorage.getItem('wishList')));
   }, []);
-  // useEffect(() => {
-  //   const getMovies = async () => {
-  //     if (isWish === false) {
-  //       const result = await apiBdd.get('/movie/', );
-  //       setMovies(result.data.results);
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   if (loading === true) {
-  //     getMovies();
-  //   }
-  // }, [loading]);
 
   return (
     <div className={styles.row}>
