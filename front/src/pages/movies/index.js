@@ -51,9 +51,9 @@ const Index = () => {
       setUpcomingMovies(moviesFilter(result.data, 'upcoming'));
 
       setMovieBanner(
-        moviesFilter(result.data, 'top_rated')[
+        moviesFilter(result.data, 'popular')[
           Math.floor(
-            Math.random() * moviesFilter(result.data, 'top_rated')?.length - 1,
+            Math.random() * moviesFilter(result.data, 'popular')?.length - 1,
           )
         ],
       );
