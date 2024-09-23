@@ -48,7 +48,7 @@ const Index = () => {
     //   icon: <MdOutlineSecurity />,
     // },
     {
-      text: 'My likes',
+      text: 'My favorites',
       path: '/favorites',
       icon: <MdFavoriteBorder />,
     },
@@ -63,10 +63,7 @@ const Index = () => {
     <nav className={styles.nav}>
       <ul>
         <li>
-          <Button
-            text={"Retour à l'accueil"}
-            onClick={() => router.push('/')}
-          />
+          <Button text={'Home'} onClick={() => router.push('/')} />
         </li>
         {navItems.map(item => (
           <li

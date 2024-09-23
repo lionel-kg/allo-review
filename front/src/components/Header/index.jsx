@@ -55,6 +55,13 @@ const index = () => {
           {router.asPath !== '/login' && (
             <ul>
               <li>
+                <Button
+                  classes={styles.search}
+                  onClick={() => setShowSearch(true)}
+                  icon={<IoIosSearch />}
+                />
+              </li>
+              <li>
                 <Link href="/pricing">
                   <p>Pricing</p>
                 </Link>
@@ -73,13 +80,6 @@ const index = () => {
                   </li>
                 </>
               )}
-              <li>
-                <Button
-                  classes={styles.search}
-                  onClick={() => setShowSearch(true)}
-                  icon={<IoIosSearch />}
-                />
-              </li>
               <li>
                 <Button
                   onClick={() => setShowRecommendations(true)}

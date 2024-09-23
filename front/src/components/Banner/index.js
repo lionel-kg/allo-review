@@ -62,7 +62,7 @@ const Index = props => {
           <div className={styles.banner_buttons}>
             <Button
               classes="banner_btn"
-              text="Plus d'infos"
+              text="More info"
               icon={<LuInfo />}
               onClick={() => {
                 router.push('/movies/' + movie.id);
