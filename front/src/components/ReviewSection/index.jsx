@@ -10,9 +10,7 @@ const index = props => {
     <div className={styles.container_section_review}>
       <div className="flex flex-row flex-wrap ">
         <div className="p-2">
-          <p className="highlight fit-content">
-            review by {review.author_name}
-          </p>
+          <p className="highlight fit-content">{review.author_name}</p>
         </div>
         <div className="p-2">-</div>
         <div className=" p-2 flex flex-row">
