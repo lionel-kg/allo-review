@@ -12,12 +12,11 @@ const Index = () => {
   // Exemple
   const plans = [
     {
-      name: 'Pack Gratuit',
-      price: '0€ / mois',
+      name: 'Free Pack',
+      price: '0€ / month',
       priceValue: 'price_1P6YD9ItkzdIGiy5oYtO235j',
-      callToAction: 'Gratuit',
+      callToAction: 'Free',
       advantages: [
-        '5 recommendations',
         'Limited filters access',
         'Review limited to 1000 characters',
         'Advertising',
@@ -26,10 +25,10 @@ const Index = () => {
       isTrial: true,
     },
     {
-      name: 'Pack Standard',
-      price: '4.99€ / mois',
+      name: 'Standard Pack',
+      price: '9.99€ / month',
       priceValue: 'price_1P6YD9ItkzdIGiy5oYtO235j',
-      callToAction: "S'abonner",
+      callToAction: 'Subscribe',
       advantages: [
         'Unlimited recommendations',
         'Access to all filters',
