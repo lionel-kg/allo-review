@@ -22,7 +22,7 @@
     ul {
       display: flex;
       flex-direction: row;
-      overflow: scroll;
+      flex-wrap: wrap;
       padding-right: 20px;
       li {
         white-space: nowrap;
